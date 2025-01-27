@@ -1,0 +1,8 @@
+IF
+GlobalGT("WNOPHYFriendTalks","GLOBAL",11)
+Global("CreateSHATSK","BG0119",0)
+THEN
+RESPONSE #100
+//CreateCreature("SHATSK",[564.378],3)
+SetGlobal("CreateSHATSK","AR0119",1)
+END

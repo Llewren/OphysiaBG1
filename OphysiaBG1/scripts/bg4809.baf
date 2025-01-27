@@ -1,0 +1,7 @@
+IF
+Global("CreateWNOPHY","BG4809",0)
+THEN
+RESPONSE #100
+CreateCreature("WNOPHY",[448.378],3)
+SetGlobal("CreateWNOPHY","BG4809",1)
+END

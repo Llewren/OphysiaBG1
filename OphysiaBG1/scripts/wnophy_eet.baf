@@ -1,0 +1,264 @@
+// EXPERIENCE
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPGT(Player1,31999)
+  XPLT(Myself,32000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,32000,SET)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPGT(Player1,15999)
+  XPLT(Myself,16000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,16000,SET)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPGT(Player1,7999)
+  XPLT(Myself,8000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,8000,SET)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPGT(Player1,3999)
+  XPLT(Myself,4000)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,4000,SET)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPGT(Player1,2499)
+  XPLT(Myself,2500)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    ChangeStat(Myself,XP,2500,SET)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("BD_JOINXP","LOCALS",0)
+  InParty(Myself)
+  XPLT(Player1,2499)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("BD_JOINXP","LOCALS",1)
+    SetInterrupt(TRUE)
+END
+
+// Set first friendship timer
+IF
+ InParty(Myself)
+ Global("WNOPHYFriendTalks","GLOBAL",0)
+ Global("WNOPHYFriendshipActive","GLOBAL",0)
+THEN
+ RESPONSE #100
+ RealSetGlobalTimer("WNOPHYFriendTalksTimer","GLOBAL",1800)
+ SetGlobal("WNOPHYFriendTalks","GLOBAL",1)
+ SetGlobal("WNOPHYFriendshipActive","GLOBAL",1)
+END
+
+
+// Now we need to write three blocks that will: 
+
+//(a) increment the global variable when the timer’s countdown is finished
+IF
+ InParty(Myself) //character is in the party
+ CombatCounter(0) //nobody is fighting
+ See(Player1) //character can see Player1
+ !StateCheck("WNOPHY",CD_STATE_NOTVALID) //character has no applied states that should prevent the talks
+ !StateCheck(Player1,CD_STATE_NOTVALID) //Player1 has no applied states that should prevent the talks
+ RealGlobalTimerExpired("WNOPHYFriendTalksTimer","GLOBAL") //timer stopped counting
+ Global("WNOPHYFriendshipActive","GLOBAL",1) //friendship is active
+ OR(7) //one of 9 conditions is met
+ Global("WNOPHYFriendTalks","GLOBAL",1)
+ Global("WNOPHYFriendTalks","GLOBAL",4)
+ Global("WNOPHYFriendTalks","GLOBAL",7)
+ Global("WNOPHYFriendTalks","GLOBAL",10)
+ Global("WNOPHYFriendTalks","GLOBAL",13)
+ Global("WNOPHYFriendTalks","GLOBAL",16)
+ Global("WNOPHYFriendTalks","GLOBAL",19)
+THEN
+RESPONSE #100
+ IncrementGlobal("WNOPHYFriendTalks","GLOBAL",1) //increment variable by 1
+END
+
+//(b) make the character talk when the variable is right
+IF
+ OR(7) //one of 9 conditions is met
+ Global("WNOPHYFriendTalks","GLOBAL",2)
+ Global("WNOPHYFriendTalks","GLOBAL",5)
+ Global("WNOPHYFriendTalks","GLOBAL",8)
+ Global("WNOPHYFriendTalks","GLOBAL",11)
+ Global("WNOPHYFriendTalks","GLOBAL",14)
+ Global("WNOPHYFriendTalks","GLOBAL",17)
+ Global("WNOPHYFriendTalks","GLOBAL",20)
+ THEN
+RESPONSE #100
+ MoveToObject(Player1) //move to Player1 before the talk
+ StartDialogue("WNOPHYJ",Player1) //start dialogue (WNOPHYJ.d because that’s where the talks are)
+END
+ 
+
+// (c) increment global and set the timer after the fired talk.
+IF
+ InParty(Myself) //after the talk is still in the team
+ Global("WNOPHYFriendshipActive","GLOBAL",1) //after the talk friendship is still active
+ OR(7) //one of 8 conditions is met
+ Global("WNOPHYFriendTalks","GLOBAL",3)
+ Global("WNOPHYFriendTalks","GLOBAL",6)
+ Global("WNOPHYFriendTalks","GLOBAL",9)
+ Global("WNOPHYFriendTalks","GLOBAL",12)
+ Global("WNOPHYFriendTalks","GLOBAL",15)
+ Global("WNOPHYFriendTalks","GLOBAL",18)
+ Global("WNOPHYFriendTalks","GLOBAL",21)
+THEN
+RESPONSE #100
+ IncrementGlobal("WNOPHYFriendTalks","GLOBAL",1) //increment variable by 1
+ RealSetGlobalTimer("WNOPHYFriendTalksTimer","GLOBAL",1800) //set the timer again
+END
+
+// Scenery talks
+
+
+// IF IN BEREGOST DURING CHAPTER 3
+
+IF
+	InParty(Myself)
+	CombatCounter(0)
+	!See([ENEMY])
+	See(Player1)
+	Global("Chapter","GLOBAL",3)
+	AreaCheck("BG3300")
+	Global("WNPaperTrail","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("WNPaperTrail","GLOBAL",1)
+		SetGlobalTimer("WNPaperTrail","GLOBAL",900)
+END
+
+IF
+	Global("WNPaperTrail","GLOBAL",1)
+	GlobalTimerExpired("WNPaperTrail","GLOBAL")
+THEN
+	RESPONSE #100
+		MoveToObject(Player1)
+		StartDialogueNoSet(Player1)
+END
+
+// In the city
+
+IF
+	InParty(Myself)
+	CombatCounter(0)
+	!See([ENEMY])
+	See(Player1)
+		OR(9) // Checking if the player is in any of the following areas
+		AreaCheck("BG0100")
+		AreaCheck("BG0200")
+		AreaCheck("BG0300")
+		AreaCheck("BG0600")
+		AreaCheck("BG0700")
+		AreaCheck("BG0800")
+		AreaCheck("BG1100")
+		AreaCheck("BG1200")
+		AreaCheck("BG1300")
+	Global("WNCityTalk","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("WNCityTalk","GLOBAL",1)
+		SetGlobalTimer("WNCityTalk","GLOBAL",ONE_HOUR)
+END
+
+IF
+	Global("WNCityTalk","GLOBAL",1)
+	GlobalTimerExpired("WNCityTalk","GLOBAL")
+THEN
+	RESPONSE #100
+		MoveToObject(Player1)
+		StartDialogueNoSet(Player1)
+END
+
+// Bhaalspawn reveal
+
+IF
+    OR(2)
+        PartyHasItem("SCRL2J")  // Letter
+        PartyHasItem("SCRL3F")  // The Diary of Sarevok
+    Global("WNBhaalChat","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetGlobal("WNBhaalChat","GLOBAL",1)
+        SetGlobalTimer("WNBhaalChat","GLOBAL",ONE_HOUR)
+END
+
+IF
+    Global("WNBhaalChat","GLOBAL",1)
+    GlobalTimerExpired("WNBhaalChat","GLOBAL")
+THEN
+    RESPONSE #100
+        MoveToObject(Player1)
+		StartDialogueNoSet(Player1)
+END
+
+// Dorn romance fight
+
+IF
+    Global("wn_DORN_ROMANCE_FIGHT","GLOBAL",1)
+    UnselectableVariable(0)
+THEN
+    RESPONSE #100
+        MakeUnselectable(5000)
+		SetGlobal("WNOPHYFriendshipActive","GLOBAL",3)
+END
+
+IF
+    Global("wn_DORN_ROMANCE_FIGHT","GLOBAL",1)
+    See("DORN")  // Dorn
+    !StateCheck(Myself,STATE_MIRRORIMAGE)
+    HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+THEN
+    RESPONSE #100
+        Spell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+    Global("wn_DORN_ROMANCE_FIGHT","GLOBAL",1)
+    See("DORN")  // Dorn
+	OR(2)
+    StateCheck(Myself,STATE_MIRRORIMAGE)
+	!HaveSpell(WIZARD_MIRROR_IMAGE)
+THEN
+    RESPONSE #100
+        Attack("DORN")
+END
