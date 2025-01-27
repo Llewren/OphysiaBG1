@@ -70,12 +70,21 @@ APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~
   UNLESS ~CD_STATE_NOTVALID~
 
 // Compile scripts
-COMPILE ~OphysiaBG1/scripts/wnophy.baf~
+//COMPILE ~OphysiaBG1/scripts/wnophy.baf~
 EXTEND_BOTTOM ~dorn.bcs~ ~OphysiaBG1/scripts/dorn.baf~
 
 // Extend area scripts
-EXTEND_BOTTOM ~AR4809.bcs~ ~OphysiaBG1/scripts/AR4809.baf~
-EXTEND_BOTTOM ~AR0119.bcs~ ~OphysiaBG1/scripts/AR0119.baf~
+ACTION_IF GAME_IS ~bgee~ BEGIN
+  EXTEND_BOTTOM ~AR4809.bcs~ ~OphysiaBG1/scripts/AR4809.baf~
+  EXTEND_BOTTOM ~AR0119.bcs~ ~OphysiaBG1/scripts/AR0119.baf~
+  COPY ~OphysiaBG1/scripts/wnophy_bg1.baf~ ~override/wnophy.bcs~
+    COMPILE_BAF_TO_BCS
+END ELSE ACTION_IF GAME_IS ~eet~ BEGIN
+  EXTEND_BOTTOM ~BG4809.bcs~ ~OphysiaBG1/scripts/BG4809.baf~
+  EXTEND_BOTTOM ~BG0119.bcs~ ~OphysiaBG1/scripts/BG0119.baf~
+  COPY ~OphysiaBG1/scripts/wnophy_eet.baf~ ~override/wnophy.bcs~
+    COMPILE_BAF_TO_BCS
+END
 
 // ITEMS
 COPY ~OphysiaBG1/items/wnbuck1.itm~ ~override~
