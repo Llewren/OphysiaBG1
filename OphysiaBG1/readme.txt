@@ -47,7 +47,7 @@ A: Find the thread for Ophysia on the Beamdog Forums and leave a comment or cont
 -------------
 
 Mod Author: Llewren
-General help: Lava Del'Vortel
+General help: Lava Del'Vortel, morpheus562
 Soundset: Canis Major
 Portrait: Midjourney, with edits by Llewren
 
@@ -61,5 +61,18 @@ All original content contained in this mod is © Llewren. Please do not redistri
 -- Version history --
 ---------------------
 
-January 2025 — v1.00: Initial release
+January 2025 — v1.2
+- EET compatibility by morpheus562
+- 4 new banters in BG1 (Ajantis, Kagain, Dorn, Xan)
+
+January 2025 — v1.1
+- 13 new interjections in BG1
+- Tweaks to Ophysia's biography in BG1 and in SoD
+- Tweaks to Ophysia's joining sequence dialogue in BG1
+- Moved Ophysia's interjections during Dorn's BG1 player-talks to the core files of the mod
+- Fixed Ophysia's behaviour during Dorn's 'romance fight' in BG1
+- Fixed Ophysia's Buckler having no icon without Siege of Dragonspear installed — it now has a unique BAM and a new colour scheme to match it.
+
+January 2025 — v1.0
+- Initial release
 
