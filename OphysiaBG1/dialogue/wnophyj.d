@@ -525,7 +525,7 @@ CHAIN WNOPHYJ F.05x06
 		IF~~THEN REPLY ~I'd rather not, Ophysia. Let's just get back to what we were doing.~ EXTERN WNOPHYJ F.05x09
 
 CHAIN WNOPHYJ F.05x07
-~You'd like that, would you? Here I thought our little conversations were a blight upon your daily routine.~ EXTERN WNOPHYJ F.05x10
+~You'd like that, would you? Here I thought our little conversations were a scourge upon your daily routine.~ EXTERN WNOPHYJ F.05x10
 
 CHAIN WNOPHYJ F.05x08
 ~You suppose, do you? Well, thank you for your cooperation.~ EXTERN WNOPHYJ F.05x10

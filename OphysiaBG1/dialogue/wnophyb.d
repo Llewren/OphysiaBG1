@@ -2,18 +2,34 @@ BEGIN WNOPHYB
 
 // Ajantis
 
-CHAIN IF ~Global("WNOPHYAJANTIS1","GLOBAL",0)
+CHAIN IF ~Global("WNOPHY_AJANTIS","GLOBAL",0)
           CombatCounter(0)
           !StateCheck("AJANTIS",CD_STATE_NOTVALID)
           InParty("WNOPHY")
           See("WNOPHY")
-          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BAJANT WNOPHYAJANTIS1
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BAJANT WNOPHY_AJANTIS_1
   ~I would have words with you, bard.~
-  DO ~SetGlobal("WNOPHYAJANTIS1","GLOBAL",1)~
+  DO ~SetGlobal("WNOPHY_AJANTIS","GLOBAL",1)~
   == WNOPHYB ~Are you talking to me, Ajantis?~
   == BAJANT ~While I have infinite respect for the fairer sex, I must admit that your callousness both in and out of battle is not befitting of our righteous quest.~
   == WNOPHYB ~Surely you have something better to do than lecture me. Go and smite a goblin, or whatever it is you do.~
   == BAJANT ~Hmph!~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_AJANTIS","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+          InParty("AJANTIS")
+          See("AJANTIS")
+          !StateCheck("AJANTIS",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_AJANTIS_2
+  ~Why do you wish to be knighted so badly, Ajantis?~
+  DO ~SetGlobal("WNOPHY_AJANTIS","GLOBAL",2)~
+  == BAJANT ~Whatever do you mean? It would be odd if I did NOT desire knighthood!~
+  == WNOPHYB ~I suppose you're right, but I'm asking you why YOU want to be a knight. What will it actually change in the good that you do for the world? You're already capable of much—what will a title change?~
+  == BAJANT ~A title, Ophysia, means more than just respect—it means power to act! As a knight, I would be entrusted with the authority to fight evil wherever it rears its head. That is why I wish for knighthood.~
+  == WNOPHYB ~Authority, then? Would that authority extend to, for example, a corrupt higher-up in your order?~
+  == BAJANT ~Bah. I'll not entertain such notions—if you are determined not to respect me, I shan't put in the effort to impress you.~
+
 EXIT
 
 // Alora
@@ -42,7 +58,7 @@ CHAIN IF ~Global("WNOPHYBRANWEN1","GLOBAL",0)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BBRANW WNOPHYBRANWEN1
 ~Ophysia, it is a pleasure to watch you on the battlefield. You may tell stories of your battles, but the way you fight also tells a story about you.~
   DO ~SetGlobal("WNOPHYBRANWEN1","GLOBAL",1)~
-  == WNOPHYB ~I'm not sure that story would make for a very interesting telling, but... thank you, Branwen.~
+  == WNOPHYB ~I'm not sure that story would make for an interesting telling, but... thank you, Branwen.~
   == BBRANW ~Do not speak of yourself in such a way. The way you move in battle, how you strike with your sword... it tells the tale of a difficult life, yes, but also a tale of strength. Strength enough to rise above the challenges that the fates bestowed upon you.~
   == WNOPHYB ~I could say the same for you, Branwen.~
   == BBRANW ~I thank you, but you need not deflect a compliment when it comes your way.~
@@ -66,31 +82,43 @@ EXIT
 
 // Dorn
 
-CHAIN IF ~Global("WNOPHYDORN1","GLOBAL",0)
+CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",0)
           CombatCounter(0)
           !StateCheck("DORN",CD_STATE_NOTVALID)
           InParty("WNOPHY")
           See("WNOPHY")
-          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BDORN WNOPHYDORN1
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BDORN WNOPHY_DORN_1
  ~Cease your staring, girl.~
-  DO ~SetGlobal("WNOPHYDORN1","GLOBAL",1)~
+  DO ~SetGlobal("WNOPHY_DORN","GLOBAL",1)~
   == WNOPHYB ~I'm not staring at you, Dorn. Why would I want to? Every time I ACCIDENTALLY look at you, I regret it.~
   == BDORN ~Do not think you can hide your sideways glances from me. I've been betrayed one too many times not to know when someone is planning on stabbing me in the back. Believe me—you won't get the chance.~
   == WNOPHYB ~Oh yeah, that would be a great idea. Me, trying to kill the half-orc holding a massive sword. You've got some major trust issues, Dorn. I have to wonder why <CHARNAME> even let you come with us.~
   == BDORN ~Trust is for fools, and you are clearly one.~
 EXIT
 
+CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+          InParty("DORN")
+          See("DORN")
+          !StateCheck("DORN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_DORN_2
+ ~Do you do anything for fun, Dorn? Or are you so devoid of humanity that even basic pleasures hold no place in your life?~
+  DO ~SetGlobal("WNOPHY_DORN","GLOBAL",2)~
+  == BDORN ~Hrmm. I am no stranger to basic pleasures. As for 'fun'... the screams of the weak as I run my blade through their flesh, the crushing of a fool's skull beneath my boot, and the sight of the meek running from me as I walk freely through a town... these things are 'fun'.~
+  == WNOPHYB ~So that's a no, then.~
+EXIT
+
 // Dynaheir
 
-CHAIN IF ~Global("WNOPHYDYNAHEIR1","GLOBAL",0)
+CHAIN IF ~Global("WNOPHY_DYNAHEIR","GLOBAL",0)
           CombatCounter(0)
           !StateCheck("DYNAHEIR",CD_STATE_NOTVALID)
           InParty("WNOPHY")
           See("WNOPHY")
-          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BDYNAH WNOPHYDYNAHEIR1
- ~Ophysia, thy tales may stimulate the mind on occasion, but I cannot help but feel that they do more harm than good.~
-  DO ~SetGlobal("WNOPHYDYNAHEIR1","GLOBAL",1)~
-  == WNOPHYB ~Everyone is responsible for their own actions, Dynaheir. If my stories inspire others to take risks, then that's got nothing to do with me.~
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BDYNAH WNOPHY_DYNAHEIR1
+ ~Ophysia, thy tales may stimulate the mind on occasion, but I cannot help but feel that they do more harm than good. Glory is a topic to be treaded lightly, not inserted into every story as thou art so proficient at doing.~
+  DO ~SetGlobal("WNOPHY_DYNAHEIR1","GLOBAL",1)~
+  == WNOPHYB ~I doubt my stories are compelling common folk to pick up weapons and rise up against those that would do them harm—and if they are, then I'm doing a better job than I thought.~
   == BDYNAH ~Thou would'st do well to view this matter from wizened eyes. Such perspective will come in time, I suppose.~
   EXIT
   
@@ -191,14 +219,14 @@ CHAIN IF ~Global("WNOPHYIMOEN1","GLOBAL",0)
           !StateCheck("IMOEN",CD_STATE_NOTVALID)~ THEN WNOPHY WNOPHYIMOEN1
 ~...And when his blade finally broke, he was left with two options.~
   DO ~SetGlobal("WNOPHYIMOEN1","GLOBAL",1)~
-  == BIMOEN ~What did he do?~
-  == WNOPHYB ~Well, he could either accept death, or get... creative.~
+  == BIMOEN ~What were they?~
+  == WNOPHYB ~Accept death... or get creative.~
   == BIMOEN ~Creative?~
-  == WNOPHYB ~The vial of acid on his belt—he took off his left shoe, and emptied the vial into it. While it was eating away at the leather, he threw it right into the hobgoblin's face, removing its ugly grin from this realm.~
+  == WNOPHYB ~The vial of acid on his belt—he took off his left shoe, and emptied the vial into it. While it was eating away at the leather, he threw it right into the ogres's face, removing its ugly grin from this realm.~
   == BIMOEN ~Ooh, haha! I'll have to remember that one. Your stories make me so nostalgic, Ophysia. Back home, Puffguts would talk my ear off about all the things he'd seen and heard.~
   == WNOPHYB ~You grew up with <CHARNAME> in Candlekeep, right?~
   == BIMOEN ~Yup. Never really had any parents, but I always felt right at home when listening to those ol' stories.~
-  == WNOPHYB ~I'm glad I could give you a taste of home, then, Imoen.~
+  == WNOPHYB ~I'm glad I could make you smile, Imoen.~
   EXIT
 
 // Jaheira
@@ -217,30 +245,44 @@ CHAIN IF ~Global("WNOPHYJAHEIRA1","GLOBAL",0)
 
 // Kagain
 
-CHAIN IF ~Global("WNOPHYKAGAIN1","GLOBAL",0)
+CHAIN IF ~Global("WNOPHY_KAGAIN","GLOBAL",0)
           CombatCounter(0)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)
           InParty("KAGAIN")
           See("KAGAIN")
-          !StateCheck("KAGAIN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHYKAGAIN1
-~So, Kagain, how'd you end up as a mercenary?~
-  DO ~SetGlobal("WNOPHYJAHEIRA1","GLOBAL",1)~
+          !StateCheck("KAGAIN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_KAGAIN_1
+~So, Kagain, how'd you wind up running a mercenary business?~
+  DO ~SetGlobal("WNOPHY_KAGAIN","GLOBAL",1)~
   == BKAGAI ~Mind your own buisness, half-elf.~
   == WNOPHYB ~Fine by me. I was just trying to be pleasant.~
   == BKAGAI ~You're lucky I don't find ya fightin' as insufferable as ya yappin', otherwise I wouldn't suffer your company.~  
   == WNOPHYB ~I'm sure I'm truly blessed.~
   EXIT
   
+  CHAIN IF ~Global("WNOPHY_KAGAIN","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("KAGAIN",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BKAGAI WNOPHY_KAGAIN_2
+~Where'd ya pick up that swing, girl? Yer sword arm’s got a mean streak, I'll give ya that.~
+  DO ~SetGlobal("WNOPHY_KAGAIN","GLOBAL",2)~
+  == WNOPHYB ~Why, Kagain, are you talking to me voluntarily? Here I thought you couldn't stand me.~
+  == BKAGAI ~Don’t flatter yerself, girl. I can appreciate skill with a blade—ain’t the same as likin’ you. I asked a question, didn't I?~
+  == WNOPHYB ~Where did I learn to fight? Here and there. The streets I grew up on tend to teach a girl fast, especially if she doesn’t want to end up bleeding out in an alley.~
+  == BKAGAI ~Didnae take ya for a street rat, but I s'pose it checks out. Nothin’ like fightin’ for yer life to put some steel in yer spine.~
+  EXIT
+  
 // Kivan
 
-CHAIN IF ~Global("WNOPHYKIVAN1","GLOBAL",0)
+CHAIN IF ~Global("WNOPHY_KIVAN","GLOBAL",0)
           CombatCounter(0)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)
           InParty("KIVAN")
           See("KIVAN")
-          !StateCheck("KIVAN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHYKIVAN1
+          !StateCheck("KIVAN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_KIVAN_1
 ~Your skill with a bow is impressive. I'd be glad to be even half as good with a sword.~
-  DO ~SetGlobal("WNOPHYKIVAN1","GLOBAL",1)~
+  DO ~SetGlobal("WNOPHY_KIVAN","GLOBAL",1)~
   == BKIVAN ~Flattery will get you nowhere.~
   == WNOPHYB ~Maybe not with you. Thankfully, not everyone is so stiff.~
   == BKIVAN ~Leave me be. I'm not in the mood to talk.~
@@ -334,7 +376,7 @@ CHAIN IF ~Global("WNOPHYRASAAD1","GLOBAL",0)
           InParty("WNOPHY")
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BRASAAD WNOPHYRASAAD1
- ~Do you worship any god, Ophysia? I often see you enjoying the majesty of Selûne's moonlight.~
+ ~Do you worship any god, Ophysia? I have seen you enjoying the majesty of Selûne's moonlight on occasion.~
   DO ~SetGlobal("WNOPHYRASAAD1","GLOBAL",1)~
   == WNOPHYB ~I don't WORSHIP, exactly, but I... pay my respects to many gods, in a sense. Sune, Lliira, Selûne—just to name a few.~
   == BRASAAD ~Ah, I see. It is good to have many sources from which to draw strength, and such a truth is evident in your character.~
@@ -417,16 +459,30 @@ EXIT
 
 // Xan
 
-CHAIN IF ~Global("WNOPHYXAN1","GLOBAL",0)
+CHAIN IF ~Global("WNOPHY_XAN","GLOBAL",0)
           CombatCounter(0)
           !StateCheck("XAN",CD_STATE_NOTVALID)
           InParty("WNOPHY")
           See("WNOPHY")
-          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BXANNN WNOPHYXAN1
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BXANNN WNOPHY_XAN_1
  ~I am shocked that you have yet to get yourself killed yet, Ophysia. I suppose there is time yet.~
-  DO ~SetGlobal("WNOPHYXAN1","GLOBAL",1)~
-    == WNOPHYB ~If I do die, I'll be sure to make it incredibly melodramatic, just to mock you.~  
+  DO ~SetGlobal("WNOPHY_XAN","GLOBAL",1)~
+    == WNOPHYB ~If I do die, I'll be sure to make it incredibly melodramatic. Just for you.~  
 	== BXANNN ~With your attitude, it is simply an inevitability that we will all meet our end. Probably sooner than later.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_XAN","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+          InParty("XAN")
+          See("XAN")
+          !StateCheck("XAN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_XAN_2
+ ~Why so glum, Xan? Is my company such a blight on your day?~
+  DO ~SetGlobal("WNOPHY_XAN","GLOBAL",2)~
+    == BXANNN ~You know well that your presence in this group has little bearing on my mood, Ophysia. I would tell you not to overestimate yourself, but I have a suspicion that such sentiment will fall on deaf ears.~  
+	== WNOPHYB ~Are you sure? The way that your face twists so unnaturally when you look at me tells another story.~
+	== BXANNN ~My expression is derived not from your presence, but from the cruel jest that I am still here to endure it. Rest assured, Ophysia, the cosmos plays a far greater role in my misery than you ever could.~
+	== WNOPHYB ~That's... great, Xan.~
 EXIT
 
 // Xzar
