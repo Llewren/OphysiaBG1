@@ -100,14 +100,13 @@ IF
  !StateCheck(Player1,CD_STATE_NOTVALID) //Player1 has no applied states that should prevent the talks
  RealGlobalTimerExpired("WNOPHYFriendTalksTimer","GLOBAL") //timer stopped counting
  Global("WNOPHYFriendshipActive","GLOBAL",1) //friendship is active
- OR(7) //one of 9 conditions is met
+ OR(6)
  Global("WNOPHYFriendTalks","GLOBAL",1)
  Global("WNOPHYFriendTalks","GLOBAL",4)
  Global("WNOPHYFriendTalks","GLOBAL",7)
  Global("WNOPHYFriendTalks","GLOBAL",10)
  Global("WNOPHYFriendTalks","GLOBAL",13)
  Global("WNOPHYFriendTalks","GLOBAL",16)
- Global("WNOPHYFriendTalks","GLOBAL",19)
 THEN
 RESPONSE #100
  IncrementGlobal("WNOPHYFriendTalks","GLOBAL",1) //increment variable by 1
@@ -115,14 +114,13 @@ END
 
 //(b) make the character talk when the variable is right
 IF
- OR(7) //one of 9 conditions is met
+ OR(6)
  Global("WNOPHYFriendTalks","GLOBAL",2)
  Global("WNOPHYFriendTalks","GLOBAL",5)
  Global("WNOPHYFriendTalks","GLOBAL",8)
  Global("WNOPHYFriendTalks","GLOBAL",11)
  Global("WNOPHYFriendTalks","GLOBAL",14)
  Global("WNOPHYFriendTalks","GLOBAL",17)
- Global("WNOPHYFriendTalks","GLOBAL",20)
  THEN
 RESPONSE #100
  MoveToObject(Player1) //move to Player1 before the talk
@@ -134,14 +132,13 @@ END
 IF
  InParty(Myself) //after the talk is still in the team
  Global("WNOPHYFriendshipActive","GLOBAL",1) //after the talk friendship is still active
- OR(7) //one of 8 conditions is met
+ OR(6)
  Global("WNOPHYFriendTalks","GLOBAL",3)
  Global("WNOPHYFriendTalks","GLOBAL",6)
  Global("WNOPHYFriendTalks","GLOBAL",9)
  Global("WNOPHYFriendTalks","GLOBAL",12)
  Global("WNOPHYFriendTalks","GLOBAL",15)
  Global("WNOPHYFriendTalks","GLOBAL",18)
- Global("WNOPHYFriendTalks","GLOBAL",21)
 THEN
 RESPONSE #100
  IncrementGlobal("WNOPHYFriendTalks","GLOBAL",1) //increment variable by 1
