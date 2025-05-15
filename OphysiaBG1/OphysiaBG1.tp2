@@ -3,11 +3,11 @@ AUTHOR ~Llewren~
 README ~OphysiaBG1/readme.txt~
 
 LANGUAGE ~English~
-         ~english~   
+         ~english~
          ~OphysiaBG1/translations/english/setup.tra~
          ~OphysiaBG1/translations/english/JournalEntries.tra~
 
-BEGIN ~Ophysia, a Skald companion for BG:EE and SoD~
+BEGIN ~Ophysia, a Skald companion for BG:EE and SoD~ DESIGNATED 0
 REQUIRE_PREDICATE (GAME_IS ~bgee eet~) ~Component requires BG: EE or EET~
 
 ADD_JOURNAL TITLE (@0) @1 USING ~OphysiaBG1/translations/english/JournalEntries.tra~
@@ -22,5 +22,7 @@ ACTION_IF GAME_INCLUDES ~sod~ THEN BEGIN
 END
 
 // Optional: BG:EE Ophysia Interjections
-BEGIN ~Optional: Give Ophysia interjections throughout BG1 content?~
-	COMPILE ~OphysiaBG1/dialogue/wnophin.d~
+BEGIN ~Optional: Give Ophysia interjections throughout BG1 content?~ DESIGNATED 10
+REQUIRE_COMPONENT ~OphysiaBG1.tp2~ ~0~ ~The main component must be installed~
+
+COMPILE ~OphysiaBG1/dialogue/wnophin.d~
