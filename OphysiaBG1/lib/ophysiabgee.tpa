@@ -21,7 +21,7 @@ COPY ~OphysiaBG1/creatures/wnophy.cre~ ~override/wnophy.cre~
   SAY BIO ~When asked about her past, OPHYSIA regales you with colorful stories of her exploits north of Baldur's Gate, from battles against impossible odds to daring escapes—all of which she assures you are completely true. From what you can gather, she originally hails from Waterdeep, the City of Splendors, but becomes uncharacteristically quiet when prompted on it, preferring to direct the conversation towards her current home of Daggerford.
 
 When profits from spinning tales wears thin, Ophysia takes to the road to find new ones—preferring to do so in the company of traveling merchants who will pay for her sword arm, if not her company.
- 
+
 Apparently mercenary work has been sparse for those not interested in banditry, so Ophysia has ventured south to take matters into her own hands and put an end to the issues that plague the Sword Coast. She appears to be a strong-willed young woman, if a bit overconfident.~
   SAY MORALE ~I think it's time for a tactical retreat. ~ [wnoph01]
   SAY HAPPY ~This could make for a great story!~ [wnoph02]
@@ -29,7 +29,7 @@ Apparently mercenary work has been sparse for those not interested in banditry, 
   SAY UNHAPPY_SERIOUS ~Shouldn't we be... helping people?~ [wnoph04]
   SAY UNHAPPY_BREAKING_POINT ~I've had enough. I'm leaving.~ [wnoph05]
   SAY LEADER ~Oh, alright! As leader, I order you to walk ahead of me.~ [wnoph06]
-  SAY TIRED ~I'm tired. Who wants to tell stories around a fire?~ [wnoph07] 
+  SAY TIRED ~I'm tired. Who wants to tell stories around a fire?~ [wnoph07]
   SAY BORED ~And thus our tale ended... as we dropped dead from boredom.~ [wnoph08]
   SAY BATTLE_CRY1 ~For Daggerford!~ [wnoph10]
   SAY BATTLE_CRY2 ~Into the fray!~ [wnoph11]
@@ -101,5 +101,6 @@ Requires:
 4 Strength
 
 Weight: 2~
+LPF ALTER_EFFECT INT_VAR match_opcode = 319 special = RESOLVE_STR_REF("Ophysia") END
 
 
