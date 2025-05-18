@@ -180,7 +180,7 @@ CHAIN IF ~Global("WNOPHYFALDORN1","GLOBAL",0)
           See("FALDORN")
           !StateCheck("FALDORN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHYFALDORN2
 ~How did you become a druid, Faldorn? It doesn't seem like the sort of life that you just walk into.~
-  DO ~SetGlobal("WNOPHYELDOTH1","GLOBAL",2)~
+  DO ~SetGlobal("WNOPHYFALDORN1","GLOBAL",2)~
   == BFALDO ~I will tell you nothing beyond that I was given to my sect as a child, for that is all I know.~
   == WNOPHYB ~Your parents gave you away?~
   == BFALDO ~I am now no one's child but the Oakfather's... but yes.~
@@ -199,7 +199,7 @@ CHAIN IF ~Global("WNOPHYGARRICK1","GLOBAL",0)
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BGARRI WNOPHYGARRICK1
 ~My lady Ophysia, your stories make our journeys all the more enjoyable, but uh—perhaps you could be a slight more selective with when you choose to share them.~
-  DO ~SetGlobal("WNOPHYFALDORN1","GLOBAL",1)~
+  DO ~SetGlobal("WNOPHYGARRICK1","GLOBAL",1)~
   == WNOPHYB ~Could you possibly be more vague with what you suggest, Garrick?~
   == BGARRI ~Well, I've noticed you've taken to humming tunes in the morning—and while I encourage and respect your vocal endeavours, my voice shines in the morning in such a way it does not in the evening.~
   == WNOPHYB ~You're saying that I'm... preventing you from practicing your craft? How... terrible.~ 
