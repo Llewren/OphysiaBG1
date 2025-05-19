@@ -3,7 +3,7 @@ BEGIN WNOPHY
 // Nashkel Mines has not been cleared
 
 CHAIN IF ~Global("WNOPHYJoin","GLOBAL",0) GlobalLT("Chapter","GLOBAL",3) NumTimesTalkedTo(0)~ THEN WNOPHY Join01
-~...And as I drove my blade into the bandit's chest, it snapped clean in two! The very one you see in my hand.~
+~...and as I drove my blade into the bandit's chest, it snapped clean in two! The very one you see in my hand.~
 == MTOWNA ~Ouch!~
 == BART2 ~Damned iron...~
 == WNOPHY ~Ah, it seems we've a new member of our audience. Can I help you?~
