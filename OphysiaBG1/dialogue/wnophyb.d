@@ -163,6 +163,7 @@ CHAIN IF ~Global("WNOPHY_ELDOTH","GLOBAL",1)
 	DO ~SetGlobal("WNOPHY_ELDOTH","GLOBAL",2)~
 	== WNOPHYB ~You... chauvinistic, good-for-nothing bastard! Gods, you're nearly as insufferable as your music.~
 	== BELDOT ~And with the sound of your voice, the facade of allure dies. Go and bother someone else, I've reached my capacity for irritation.~
+	== BSKIE IF ~InParty("SKIE")~ ~*whisper* Just ignore him, Ophysia. He's in a foul mood.~
 EXIT
   
 
@@ -354,7 +355,7 @@ CHAIN IF ~Global("WNOPHY_NEERA","GLOBAL",0)
 	== BNEERA ~Oh yeah? The place has an odd way of spitting people out. I miss it, sometimes, but didn't take very well to wild mages.~
 	== WNOPHYB ~Not many places do, it seems.~
 	== BNEERA ~You're right about that. People usually only kick me out after I've burned something down, though.~
-	== WNOPHYB ~Is that a hobby of yours, or just something you''re naturally gifted at?~
+	== WNOPHYB ~Is that a hobby of yours, or just something you're naturally gifted at?~
 	== BNEERA ~Both. Be sure to keep me away from any wooden structures.~
 EXIT
 
@@ -398,10 +399,10 @@ CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",0)
           InParty("WNOPHY")
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSAFAN WNOPHY_SAFANA_1
-~You always have something clever to say, don’t you? Makes a girl wonder whether you’re performing or if you just like the attention.~
+~You always have something clever to say, don’t you? Makes a girl wonder... Is it a performance? Or do you just like the attention?~
 	DO ~SetGlobal("WNOPHY_SAFANA","GLOBAL",1)~
-	== WNOPHYB ~You’d be amazed by how often those two things go hand in hand.~
-	== BSAFAN ~Mm. I’m not so easily dazzled, you know. But I do admire your commitment.~
+	== WNOPHYB ~You know, you’d be amazed by how often those two things go hand in hand.~
+	== BSAFAN ~Mm. I’m not so easily dazzled. But I do admire your commitment.~
 EXIT
 
 CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",1)
@@ -412,7 +413,7 @@ CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",1)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSAFAN WNOPHY_SAFANA_2
 ~If I ever find myself in need of rescuing, I do hope you’ll be the one charging to my aid, Ophysia.~
 	DO ~SetGlobal("WNOPHY_SAFANA","GLOBAL",2)~
-	== WNOPHYB ~Oh? And what exactly are you hoping to get from me with flattery like that?~
+	== WNOPHYB ~Oh? What exactly are you hoping that flattery will win you today, Safana?~
 	== BSAFAN ~I find it never hurts to encourage loyalty in the right places.~
 	== WNOPHYB ~You might be misjudging mine—and you'd be no good at the damsel in distress role, I'm afraid.~
 EXIT
@@ -427,7 +428,7 @@ CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",0)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSHART WNOPHY_SHARTEEL_1
  ~It is refreshing to travel with a woman who can hold her own in combat.~
 	DO ~SetGlobal("WNOPHY_SHARTEEL","GLOBAL",1)~
-	== WNOPHYB ~I could say the same about you, Shar-Teel.~  
+	== WNOPHYB ~I... could say the same about you, Shar-Teel.~  
 	== BSHART ~That means much from one as respectable as yourself.~
 EXIT
   
@@ -472,7 +473,7 @@ CHAIN IF ~Global("WNOPHY_VICONIA","GLOBAL",0)
  ~I am unsure what to make of you, bard. Your inability to keep the silence is irritating, but you are one of few surfacers I've met who treat me with some modicum of respect.~
 	DO ~SetGlobal("WNOPHY_VICONIA","GLOBAL",1)~
   	== WNOPHYB ~Why, Viconia, that was oddly pleasant of you. You know, I'll gladly pipe down for your sake. All you have to do is ask nicely.~  
-		== BVICON ~I suppose I'll have to put up with it, then.~
+	== BVICON ~I suppose I'll have to put up with it, then.~
 EXIT
 
 // Xan
@@ -486,7 +487,7 @@ CHAIN IF ~Global("WNOPHY_XAN","GLOBAL",0)
  ~I am shocked that you have yet to get yourself killed yet, Ophysia. I suppose there is time yet.~
 	DO ~SetGlobal("WNOPHY_XAN","GLOBAL",1)~
   	== WNOPHYB ~If I do die, I'll be sure to make it incredibly melodramatic. Just for you.~  
-		== BXANNN ~With your attitude, it is simply an inevitability that we will all meet our end. Probably sooner than later.~
+	== BXANNN ~With your attitude, it is simply an inevitability that we will all meet our end. Probably sooner than later.~
 EXIT
 
 CHAIN IF ~Global("WNOPHY_XAN","GLOBAL",1)
@@ -498,9 +499,9 @@ CHAIN IF ~Global("WNOPHY_XAN","GLOBAL",1)
  ~Why so glum, Xan? Is my company such a blight on your day?~
 	DO ~SetGlobal("WNOPHY_XAN","GLOBAL",2)~
   	== BXANNN ~You know well that your presence in this group has little bearing on my mood, Ophysia. I would tell you not to overestimate yourself, but I have a suspicion that such sentiment will fall on deaf ears.~  
-		== WNOPHYB ~Are you sure? The way that your face twists so unnaturally when you look at me tells another story.~
-		== BXANNN ~My expression is derived not from your presence, but from the cruel jest that I am still here to endure it. Rest assured, Ophysia, the cosmos plays a far greater role in my misery than you ever could.~
-		== WNOPHYB ~That's... great, Xan.~
+	== WNOPHYB ~Are you sure? The way that your face twists so unnaturally when you look at me tells another story.~
+	== BXANNN ~My expression is derived not from your presence, but from the cruel jest that I am still here to endure it. Rest assured, Ophysia, the cosmos plays a far greater role in my misery than you ever could.~
+	== WNOPHYB ~That's... great, Xan.~
 EXIT
 
 // Xzar
