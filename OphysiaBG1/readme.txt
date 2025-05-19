@@ -47,7 +47,7 @@ A: Find the thread for Ophysia on the Beamdog Forums and leave a comment or cont
 -------------
 
 Mod Author: Llewren
-General help: Lava Del'Vortel, morpheus562
+General help: Lava Del'Vortel, morpheus562, RoyalProtector
 Soundset: Canis Major
 Portrait: Midjourney, with edits by Llewren
 
@@ -60,6 +60,16 @@ All original content contained in this mod is © Llewren. Please do not redistri
 ---------------------
 -- Version history --
 ---------------------
+
+May 2025 — v1.2.2
+- Tweaked internal banter formatting
+- Adjusted tone for BG:EE banters (Alora, Faldorn, Neera, Imoen, Rasaad, Safana)
+- 2 new banters in BG1 (Eldoth, Safana)
+- Buckler fixes by RoyalProtector
+- Main component is now required for interjections to be installed
+
+April 2025 — v1.2.1
+- Fixed an issue in which Ophysia will attempt to initiate nonexistent dialogue.
 
 January 2025 — v1.2
 - EET compatibility by morpheus562
