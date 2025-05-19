@@ -17,7 +17,7 @@ Much to her own distaste, Ophysia has joined the Flaming Fist expedition and see
   SAY UNHAPPY_SERIOUS ~Shouldn't we be... helping people?~ [wnoph04]
   SAY UNHAPPY_BREAKING_POINT ~I've had enough. I'm leaving.~ [wnoph05]
   SAY LEADER ~Oh, alright! As leader, I order you to walk ahead of me.~ [wnoph06]
-  SAY TIRED ~I'm tired. Who wants to tell stories around a fire?~ [wnoph07] 
+  SAY TIRED ~I'm tired. Who wants to tell stories around a fire?~ [wnoph07]
   SAY BORED ~And thus our tale ended... as we dropped dead from boredom.~ [wnoph08]
   SAY BATTLE_CRY1 ~For Daggerford!~ [wnoph10]
   SAY BATTLE_CRY2 ~Into the fray!~ [wnoph11]
@@ -48,15 +48,15 @@ Much to her own distaste, Ophysia has joined the Flaming Fist expedition and see
   SAY SET_A_TRAP ~Trap's set, and they're none the wiser.~ [wnoph34]
   SAY HIDDEN_IN_SHADOWS ~Being quiet!~ [wnoph35]
   SAY PICKED_POCKET ~I'll take that!~ [wnoph36]
-  
+
   APPEND ~bddialog.2da~ ~WNOPHY WNSOPHYP WNSOPHYJ WNSOPHYD~
   UNLESS ~WNOPHY~
-  
+
 COMPILE	EVAL ~OphysiaBG1/dialogue/sod/wnsophy.d~
 		~OphysiaBG1/dialogue/sod/wnsophyp.d~
 		~OphysiaBG1/dialogue/sod/wnsophyj.d~
 		~OphysiaBG1/dialogue/sod/wnmadri.d~
-		
+
 COMPILE ~OphysiaBG1/scripts/sod/wnsoph01.baf~
 COMPILE ~OphysiaBG1/scripts/sod/wnsoph02.baf~
 COMPILE ~OphysiaBG1/scripts/sod/wnsoph03.baf~
@@ -75,7 +75,7 @@ COMPILE ~OphysiaBG1/scripts/sod/wnsoph15.baf~
 COMPILE ~OphysiaBG1/scripts/sod/wnsoph16.baf~
 COMPILE ~OphysiaBG1/scripts/sod/wnsophy.baf~
 COMPILE ~OphysiaBG1/scripts/sod/wncut1.baf~
-			 
+
 
 EXTEND_TOP ~BD0103.bcs~ ~OphysiaBG1/scripts/sod/bd0103.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~BD0104.bcs~ ~OphysiaBG1/scripts/sod/bd0104.baf~ EVALUATE_BUFFER
@@ -105,7 +105,7 @@ COPY ~OphysiaBG1/items/wnbuck2.itm~ ~override~
   SAY NAME1 ~Buckler~
   SAY NAME2 ~Ophysia’s Buckler~
   SAY DESC ~This finely crafted buckler was gifted to Ophysia after rescuing a merchant caravan beset by hobgoblins north of Waterdeep. It serves as a reminder of the good she’s done in the world, and she keeps it close at all times. Ophysia skillfully incorporates the buckler into her fighting style, seemingly finding great joy in delivering it directly into people’s faces.
-  
+
   The buckler was enchanted by the wizard Madri Fenthorne of Daggerford, as a personal favor to her closest friend.
 
 STATISTICS:
@@ -121,6 +121,7 @@ Requires:
 4 Strength
 
 Weight: 2~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 319 special = RESOLVE_STR_REF("Ophysia") END
 
 
 // Creatures
@@ -137,21 +138,21 @@ COPY_EXISTING ~bdlever2.BCS~ ~override~
 		SPRINT textToReplace ~\(Kill("bdkharmy")\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("WNOPHY_UsedSpikes","GLOBAL",1) \1~ 
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("WNOPHY_UsedSpikes","GLOBAL",1) \1~
 		END ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
 		END
 		SPRINT textToReplace ~\(ActionOverride(Player1,RemovePaladinHood())\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("WNOPHY_SpikeTrapFall","GLOBAL",1) \1~ 
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("WNOPHY_SpikeTrapFall","GLOBAL",1) \1~
 		END ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
 		END
 		SPRINT textToReplace ~\(ActionOverride(Player1,RemoveRangerHood())\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("WNOPHY_SpikeTrapFall","GLOBAL",1) \1~ 
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("WNOPHY_SpikeTrapFall","GLOBAL",1) \1~
 		END ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
 		END
