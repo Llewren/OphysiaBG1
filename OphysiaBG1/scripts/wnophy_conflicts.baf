@@ -1,0 +1,39 @@
+// eldoth conflict
+
+// Global("wn_ophy_eldoth","GLOBAL",1) = Eldoth (and Skie) leave
+// Global("wn_ophy_eldoth","GLOBAL",2) = Ophysia leave
+// Global("wn_ophy_eldoth","GLOBAL",3) = Resolved
+
+// Eldoth (and Skie) leave
+
+IF
+	InParty("WNOPHY")
+	InParty("ELDOTH")
+	CombatCounter(0)
+	!See([ENEMY])
+	See(Player1)
+	Global("wn_ophy_eldoth","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("wn_ophy_eldoth","GLOBAL",3)
+		ActionOverride("ELDOTH",LeaveParty())
+		ActionOverride("ELDOTH",EscapeArea())
+		ActionOverride("SKIE",LeaveParty())
+		ActionOverride("SKIE",EscapeArea())
+END
+
+// Ophysia leaves
+
+IF
+	InParty("WNOPHY")
+	InParty("ELDOTH")
+	CombatCounter(0)
+	!See([ENEMY])
+	See(Player1)
+	Global("wn_ophy_eldoth","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("wn_ophy_eldoth","GLOBAL",3)
+		ActionOverride("WNOPHY",LeaveParty())
+		ActionOverride("WNOPHY",EscapeArea())
+END

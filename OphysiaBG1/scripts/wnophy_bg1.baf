@@ -161,14 +161,15 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("WNPaperTrail","GLOBAL",1)
-		SetGlobalTimer("WNPaperTrail","GLOBAL",900)
+		SetGlobalTimer("WNPaperTrailTimer","GLOBAL",200)
 END
 
 IF
 	Global("WNPaperTrail","GLOBAL",1)
-	GlobalTimerExpired("WNPaperTrail","GLOBAL")
+	GlobalTimerExpired("WNPaperTrailTimer","GLOBAL")
 THEN
 	RESPONSE #100
+		SetGlobal("WNPaperTrail","GLOBAL",2)
 		MoveToObject(Player1)
 		StartDialogueNoSet(Player1)
 END
@@ -194,14 +195,15 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("WNCityTalk","GLOBAL",1)
-		SetGlobalTimer("WNCityTalk","GLOBAL",ONE_HOUR)
+		SetGlobalTimer("WNCityTalkTimer","GLOBAL",ONE_HOUR)
 END
 
 IF
 	Global("WNCityTalk","GLOBAL",1)
-	GlobalTimerExpired("WNCityTalk","GLOBAL")
+	GlobalTimerExpired("WNCityTalkTimer","GLOBAL")
 THEN
 	RESPONSE #100
+		SetGlobal("WNCityTalk","GLOBAL",2)
 		MoveToObject(Player1)
 		StartDialogueNoSet(Player1)
 END
@@ -216,14 +218,15 @@ IF
 THEN
     RESPONSE #100
         SetGlobal("WNBhaalChat","GLOBAL",1)
-        SetGlobalTimer("WNBhaalChat","GLOBAL",ONE_HOUR)
+        SetGlobalTimer("WNBhaalChatTimer","GLOBAL",ONE_HOUR)
 END
 
 IF
     Global("WNBhaalChat","GLOBAL",1)
-    GlobalTimerExpired("WNBhaalChat","GLOBAL")
+    GlobalTimerExpired("WNBhaalChatTimer","GLOBAL")
 THEN
     RESPONSE #100
+		SetGlobal("WNBhaalChat","GLOBAL",2)
         MoveToObject(Player1)
 		StartDialogueNoSet(Player1)
 END
@@ -258,4 +261,26 @@ IF
 THEN
     RESPONSE #100
         Attack("DORN")
+END
+
+// Eldoth conflict
+
+IF
+	InParty("ELDOTH")
+	Global("WNOPHY_ELDOTH","GLOBAL",4)
+	Global("WNOPHY_ELDOTH_FIGHT","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",1)
+		SetGlobalTimer("WNOPHY_ELDOTH_FIGHT_TIMER","GLOBAL",ONE_HOUR)
+END
+
+IF
+	Global("WNOPHY_ELDOTH_FIGHT","GLOBAL",1)
+	GlobalTimerExpired("WNOPHY_ELDOTH_FIGHT_TIMER","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",2)
+		MoveToObject(Player1)
+		StartDialogueNoSet(Player1)
 END

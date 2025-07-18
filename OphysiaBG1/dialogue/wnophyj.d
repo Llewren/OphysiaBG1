@@ -790,11 +790,59 @@ EXIT
 	///////////////////
 	// SCENERY TALKS //
 	///////////////////
+	
+// ELDOTH CONFLICT Global("WNOPHY_ELDOTH","GLOBAL",4)
 
-
+CHAIN IF~Global("WNOPHY_ELDOTH_FIGHT","GLOBAL",2) InParty("ELDOTH")~THEN WNOPHYJ Conflict1.00
+~Eldoth, I swear to the gods, if you keep staring at me, I will make you regret it.~
+	== ELDOTJ ~Whatever is wrong with looking? I would expect a gutter-rat like to you leap to catch any crumb of attention you can get. I doubt your parents ever gave you any—it would explain *so* much.~
+	== WNOPHYJ ~I refuse to do this with you. I've put up with your barbs for long enough. Another tenday with you and I’ll start entertaining choices I once considered beneath me.~
+	== ELDOTJ ~Oh, please, don't hold back on my account. Let's see what you've got, girl.~
+	== SKIEJ IF ~InParty("SKIE")~ THEN ~Please, will you both just stop it? We’re supposed to be a team! Eldoth, you’re being cruel—and Ophysia, you don’t deserve it, but fighting back just makes it worse. I can’t stand this. Can’t we just... try to get along?~
+	== WNOPHYJ ~<CHARNAME>, I'm struggling to see why we're keeping Eldoth around. Either he goes, or I do.~
+	END
+		IF~~THEN REPLY ~If that's the way it's going to be, then I suppose Eldoth is going.~ EXTERN ELDOTJ Conflict1.01
+		IF~InParty("SKIE")~THEN REPLY ~Skie’s right. If you two can’t put this behind you, maybe neither of you should stay. I won’t let this party be torn apart by petty fights.~ EXTERN ELDOTJ Conflict1.02
+		IF~CheckStatGT(Player1,16,CHR)~THEN REPLY ~You two are both valuable, but my patience has its limits. I expect more from the people I travel with. Either you call a truce and focus on the task at hand, or neither of you has a place in this group.~ EXTERN ELDOTJ Conflict1.03 //Success 
+		IF~CheckStatLT(Player1,16,CHR)~THEN REPLY ~You two are both valuable, but my patience has its limits. I expect more from the people I travel with. Either you call a truce and focus on the task at hand, or neither of you has a place in this group.~ EXTERN WNOPHYJ Conflict1.04 //Failure
+		IF~~THEN REPLY ~Then it looks like you're leaving, Ophysia.~ EXTERN WNOPHYJ Conflict1.05
+		
+CHAIN ELDOTJ Conflict1.01
+~What? You good for nothing wench... Fine! If you're so desperate to be rid of my company, then so be it!~
+	== ELDOTJ IF ~InParty("SKIE")~THEN ~Come along Skie. I'm not so cruel a man as to leave you in the hungry jaws of these cretins.~
+	== SKIEJ IF ~InParty("SKIE")~THEN ~*sigh* Fine, Eldoth. Maybe I'll see you around, Ophysia.~
+	== WNOPHYJ ~Get out of here, Eldoth. I'm sure you'll get what's coming to you eventually.~
+	== ELDOTJ ~Goodbye now. Hope to never see you again.~ [ELDOT07]
+	DO ~SetGlobal("wn_ophy_eldoth","GLOBAL",1) SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~ EXIT
+	
+CHAIN ELDOTJ Conflict1.02
+~Well now, it appears that my Skie has become a fountain of wisdom. I suppose I can attempt to divert my hostilities towards a more... productive end if it would so please you both.~
+	== WNOPHYJ ~I can live with that. For now.~
+	== SKIEJ IF~InParty("SKIE")~THEN ~I'll walk with you Ophysia. Maybe you could tell me a story? I always like listening to you...~
+	DO ~SetGlobal("wn_ophy_eldoth","GLOBAL",3) SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~ EXIT
+	
+CHAIN ELDOTJ Conflict1.03
+~Why, I wouldn't want to test your *patience*. Though, I suppose I can attempt to divert my hostilities towards a more... productive end if it would so please you.~
+	== WNOPHYJ ~I can live with that. For now. Just remember—if you call me 'gutter-rat' one more time, any truce between us is forfeit. Understood?~
+	== ELDOTJ ~Indeed. I shan't forget so long as you keep your blade pointed away from my neck.~
+	== SKIEJ IF~InParty("SKIE")~THEN ~See? Everything's alright. Let's just stay friendly, okay?~
+	== ELDOTJ IF~InParty("SKIE")~THEN ~Anything for you, Skie. Now come along, walk beside me.~
+	DO ~SetGlobal("wn_ophy_eldoth","GLOBAL",3) SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~ EXIT
+	
+CHAIN WNOPHYJ Conflict1.04
+~Absolutely not. I'd rather pull out my own hair than walk alongside this xvart-faced chauvinist another <DAYNIGHT>. If you want him in the group, you're saying goodbye to me—and that's not a difficult choice for me to make.~
+	END
+		IF~~THEN REPLY ~Very well. Goodbye, Eldoth—you're leaving.~ EXTERN ELDOTJ Conflict1.01
+		IF~~THEN REPLY ~If you wish to force the issue, then you'll have to leave, Ophysia.~ EXTERN WNOPHYJ Conflict1.05
+		
+CHAIN WNOPHYJ Conflict1.05
+~Fine. I see where your priorities lie, and I'd prefer not to travel with someone who prefers the company of Eldoth Kron over mine. Goodbye, <CHARNAME>.~
+	DO ~SetGlobal("wn_ophy_eldoth","GLOBAL",2) SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~ EXIT
+		
+		
 // AFTER MULAHEY'S DEATH
 
-CHAIN IF~Global("WNPaperTrail","GLOBAL",1)~THEN WNOPHYJ PaperTrail.01
+CHAIN IF~Global("WNPaperTrail","GLOBAL",2)~THEN WNOPHYJ PaperTrail.01
 ~We're lucky that all these ugly bandits seem to love carrying around letters from their bosses. I'd bet real gold that we can follow this paper trail all the way to the top. Here's a tip for if you ever put together a villanous plot—word of mouth leaves no evidence.~
 	END
 		IF~~THEN REPLY ~You've given this an awful lot of thought. You're not plotting to overthrow the Sword Coast, are you?~ EXTERN WNOPHYJ PaperTrail.02
@@ -853,27 +901,27 @@ CHAIN WNOPHYJ PaperTrail.15
 
 CHAIN WNOPHYJ PaperTrail.05
 ~Not a fan of camaraderie, huh? Fine. Let's go.~
-DO ~SetGlobal("WNPaperTrail","GLOBAL",2)~
+DO ~SetGlobal("WNPaperTrail","GLOBAL",3)~
 EXIT
 
 CHAIN WNOPHYJ PaperTrail.17
 ~We'd best keep moving. Thanks for the chat, oh great leader.~
-DO ~SetGlobal("WNPaperTrail","GLOBAL",2)~
+DO ~SetGlobal("WNPaperTrail","GLOBAL",3)~
 EXIT
 
 CHAIN WNOPHYJ PaperTrail.11
 ~Not a fan of conversations, huh? Can't blame you. Let's go.~
-DO ~SetGlobal("WNPaperTrail","GLOBAL",2)~
+DO ~SetGlobal("WNPaperTrail","GLOBAL",3)~
 EXIT
 
 CHAIN WNOPHYJ PaperTrail.16
 ~You seem to have mastered the art of selective listening, because you clearly haven't understood anything I've said. Let's cut this conversation short and get going, huh?~
-DO ~SetGlobal("WNPaperTrail","GLOBAL",2)~
+DO ~SetGlobal("WNPaperTrail","GLOBAL",3)~
 EXIT
 
 // Baldur's Gate
 
-CHAIN IF~Global("WNCityTalk","GLOBAL",1)~THEN WNOPHYJ CityTalk.01
+CHAIN IF~Global("WNCityTalk","GLOBAL",2)~THEN WNOPHYJ CityTalk.01
 ~So... Baldur's Gate. What do you think of it? Personally, I've always found it a bit pungent.~
 	END
 		IF~~THEN REPLY ~It's not that bad.~ EXTERN WNOPHYJ CityTalk.02
@@ -926,34 +974,34 @@ CHAIN WNOPHYJ CityTalk.13
 
 CHAIN WNOPHYJ CityTalk.06
 ~You won't hear me complain about that. Lead on.~
-DO ~SetGlobal("WNCityTalk","GLOBAL",2)~
+DO ~SetGlobal("WNCityTalk","GLOBAL",3)~
 EXIT
 
 CHAIN WNOPHYJ CityTalk.12
 ~Yes <PRO_SIRMAAM>.~
 == WNOPHYJ ~(Asshole).~
-DO ~SetGlobal("WNCityTalk","GLOBAL",2) SetGlobal("WNOPHYFriendshipActive","GLOBAL",3)~
+DO ~SetGlobal("WNCityTalk","GLOBAL",3) SetGlobal("WNOPHYFriendshipActive","GLOBAL",3)~
 EXIT
 
 CHAIN WNOPHYJ CityTalk.14
 ~Yeah, I know. Thank you.~
 == WNOPHYJ ~You're a good friend, <CHARNAME>.~
-DO ~SetGlobal("WNCityTalk","GLOBAL",2)~
+DO ~SetGlobal("WNCityTalk","GLOBAL",3)~
 EXIT
 
 CHAIN WNOPHYJ CityTalk.15
 ~I'm good. Sorry. Let's go.~
-DO ~SetGlobal("WNCityTalk","GLOBAL",2)~
+DO ~SetGlobal("WNCityTalk","GLOBAL",3)~
 EXIT
 
 CHAIN WNOPHYJ CityTalk.16
 ~Yeah, yeah. Come on.~
-DO ~SetGlobal("WNCityTalk","GLOBAL",2)~
+DO ~SetGlobal("WNCityTalk","GLOBAL",3)~
 EXIT
 
 // After receiving Gorion's letter or Sarevok's journal
 
-CHAIN IF~Global("WNBhaalChat","GLOBAL",1)~THEN WNOPHYJ OphyBhaal.01
+CHAIN IF~Global("WNBhaalChat","GLOBAL",2)~THEN WNOPHYJ OphyBhaal.01
 ~So... a Child of Bhaal, huh? I guess that explains the nightmares, and the random people trying to kill you, and all the chaos being sewn from your passage.~
 == WNOPHYJ ~Sorry. Bad time for jokes.~
 	END
@@ -1015,17 +1063,17 @@ CHAIN WNOPHYJ OphyBhaal.15
 
 CHAIN WNOPHYJ OphyBhaal.17
 ~Let's keep moving, yeah? Don't let me catch you moping.~
-DO ~SetGlobal("WNBhaalChat","GLOBAL",2)~ 
+DO ~SetGlobal("WNBhaalChat","GLOBAL",3)~ 
 EXIT
 
 CHAIN WNOPHYJ OphyBhaal.02
 ~That's fine, I get it. Let's just focus on the road.~
-DO ~SetGlobal("WNBhaalChat","GLOBAL",2)~
+DO ~SetGlobal("WNBhaalChat","GLOBAL",3)~
 EXIT
 
 CHAIN WNOPHYJ OphyBhaal.16
 ~Fine. I was trying to be nice, but can I see that isn't good enough for you. I thought we were friends, <CHARNAME>.~
-DO ~SetGlobal("WNBhaalChat","GLOBAL",2) SetGlobal("WNOPHYFriendshipActive","GLOBAL",3)~ 
+DO ~SetGlobal("WNBhaalChat","GLOBAL",3) SetGlobal("WNOPHYFriendshipActive","GLOBAL",3)~ 
 EXIT
 
 // EE Interactions

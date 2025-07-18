@@ -72,6 +72,7 @@ APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~
 // Compile scripts
 //COMPILE ~OphysiaBG1/scripts/wnophy.baf~
 EXTEND_BOTTOM ~dorn.bcs~ ~OphysiaBG1/scripts/dorn.baf~
+COMPILE ~OphysiaBG1/scripts/wnophy_conflicts.baf~
 
 // Extend area scripts
 ACTION_IF GAME_IS ~bgee~ BEGIN

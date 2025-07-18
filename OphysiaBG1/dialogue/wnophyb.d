@@ -105,6 +105,21 @@ CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",1)
 	== WNOPHYB ~So that's a no, then.~
 EXIT
 
+CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("DORN",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BDORN WNOPHY_DORN_3
+~I do enjoy the irony of you, bard. Even with your endless prattle.~		  
+	DO ~SetGlobal("WNOPHY_DORN","GLOBAL",2)~
+	== WNOPHYB ~Touching. I’m sure whatever follows will be absolutely delightful.~
+	== BDORN ~You sneer at the cruelty of others while you play the martyr for every whining peasant on the road. You are bound to their misery, and you call it 'goodness'.~		  
+	== WNOPHYB ~I would be shocked if you could even begin to understand the mind of a normal person, Dorn. Does the fact that I care for other people make you... insecure?~
+	== BDORN ~Hah! Insecure? Don’t make me laugh, girl. I am not the one parading my weakness for all to see.~
+EXIT
+
+
 // Dynaheir
 
 CHAIN IF ~Global("WNOPHY_DYNAHEIR","GLOBAL",0)
@@ -135,7 +150,7 @@ CHAIN IF ~Global("WNOPHYEDWIN1","GLOBAL",0)
 	== BEDWIN ~No more! I... I will submit to you, if that is what you wish. (But watch out—Odesseiron is sneaky.)~
 	== WNOPHYB ~You know that I can hear you, right?~
 	== BEDWIN ~Ack!~
-EXIT
+EXIT 
 
 // Eldoth
 
@@ -163,9 +178,40 @@ CHAIN IF ~Global("WNOPHY_ELDOTH","GLOBAL",1)
 	DO ~SetGlobal("WNOPHY_ELDOTH","GLOBAL",2)~
 	== WNOPHYB ~You... chauvinistic, good-for-nothing bastard! Gods, you're nearly as insufferable as your music.~
 	== BELDOT ~And with the sound of your voice, the facade of allure dies. Go and bother someone else, I've reached my capacity for irritation.~
-	== BSKIE IF ~InParty("SKIE")~ ~*whisper* Just ignore him, Ophysia. He's in a foul mood.~
+	== BSKIE IF ~InParty("SKIE")~ THEN ~*whisper* Just ignore him, Ophysia. He's in a foul mood.~
 EXIT
-  
+
+CHAIN IF ~Global("WNOPHY_ELDOTH","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("ELDOTH",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BELDOT WNOPHY_ELDOTH_3
+~I have heard word that a filthy little Waterdhavian gutter-rat has infiltrated our ranks. Do you have any clue who it could be, Ophysia?~
+	DO ~SetGlobal("WNOPHY_ELDOTH","GLOBAL",3)~
+	== WNOPHYB ~Why, Eldoth, it must certainly be you. After all, you never shut up about your musical education. What was the name of your college again? Noodle Arm?~
+	== BELDOT ~*ahem* The College of New Olamn, girl. While you were splashing through puddles in the slums, I was perfecting my craft halfway up Mount Waterdeep, leagues above the likes of you. It is no wonder you attempt to keep your miserable past under lock and key—I would be ashamed too.~
+	== WNOPHYB ~And yet you're still half the bard I am. If you truly believed what you were saying then you wouldn't need to tell me in order to make yourself feel better.~
+	== BELDOT ~Calling yourself a bard is a cruel joke on the whole of Faerûn.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_ELDOTH","GLOBAL",3)
+          CombatCounter(0)
+          !StateCheck("ELDOTH",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BELDOT WNOPHY_ELDOTH_4
+~How much longer must I endure this parade of incompetence? I am surrounded by dullards, but worst of all is this bitch of a bard that couldn't play a lute to save her life. If the gods had any mercy left then they would surely strike her down so we can travel without the shrill ringing of ineptitude.~
+	DO ~SetGlobal("WNOPHY_ELDOTH","GLOBAL",4)~
+	== WNOPHYB ~You talk a lot for a man with a face that's begging to be punched. My offer of a sword in your gut is still an open one, I'll have you know.~
+	== BELDOT ~Perish the thought that I would ever allow you to strike a blow on me. You and that sluggish sword arm of yours wouldn't even get within ten feet of me before you're lying face down in the mud—where you belong.~
+	== BSKIE IF ~InParty("SKIE")~ THEN ~Eldoth, PLEASE. Ophysia has done nothing to you. You have to stop being so rude!~
+	== BELDOT IF ~InParty("SKIE")~ THEN ~Skie, stand back. I am not speaking to you.~
+	== BSKIE IF ~InParty("SKIE")~ THEN ~Hmph.~
+	== WNOPHYB ~Talk all you like, Eldoth. You'll not be the one walking away should we come to blows.~
+EXIT
+ 
+
 
 // Faldorn
 
@@ -442,7 +488,7 @@ CHAIN IF ~Global("WNOPHY_SKIE","GLOBAL",0)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSKIE WNOPHY_SKIE_1
  ~Where did you learn to sing, Ophysia? The melody you sung last night was so beautiful.~
 	DO ~SetGlobal("WNOPHY_SKIE","GLOBAL",1)~
-	== WNOPHYB ~Oh, you... you heard that? I didn't realise I had an audience.~  
+	== WNOPHYB ~Oh, you... heard that? I didn't realise I had an audience.~  
 	== BSKIE ~Ophysia, why do you blush so? Are you not a bard? Surely singing is an integral part of your craft!~
 	== WNOPHYB ~I prefer to stick to telling stories. My singing is just for me.~  
 	== BSKIE ~That's a shame. Your voice truly did enrapture me.~
