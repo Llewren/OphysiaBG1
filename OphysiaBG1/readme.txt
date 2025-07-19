@@ -36,6 +36,9 @@ A: I've given no special care to ensure EET compatibility, but I likely will do 
 Q: Does Ophysia have player-initiated dialogue?
 A: No.
 
+Q: Does Ophysia have any conflicts?
+A: Ophysia and Eldoth will eventually come to (verbal) blows and you will be forced to choose between one of them unless Skie is present or the PC has 16+ Charisma.
+
 Q: Is Ophysia's portrait is AI-generated?
 A: Yes. While I generally frown upon the usage of AI-generated content, this mod is a non-profit product, and commissioning art is not within my budget at this time. When it is, expect to see more portraits for Ophysia.
 
@@ -60,6 +63,11 @@ All original content contained in this mod is © Llewren. Please do not redistri
 ---------------------
 -- Version history --
 ---------------------
+
+July 2025 — v1.3
+- Fixed several scenery talks not triggering properly
+- 4 new banters in BG1 (Dorn, Eldoth, Neera)
+- Added conflict between Eldoth and Ophysia
 
 May 2025 — v1.2.2
 - Tweaked internal banter formatting

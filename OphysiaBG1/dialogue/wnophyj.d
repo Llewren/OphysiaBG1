@@ -803,7 +803,7 @@ CHAIN IF~Global("WNOPHY_ELDOTH_FIGHT","GLOBAL",2) InParty("ELDOTH")~THEN WNOPHYJ
 	END
 		IF~~THEN REPLY ~If that's the way it's going to be, then I suppose Eldoth is going.~ EXTERN ELDOTJ Conflict1.01
 		IF~InParty("SKIE")~THEN REPLY ~Skie’s right. If you two can’t put this behind you, maybe neither of you should stay. I won’t let this party be torn apart by petty fights.~ EXTERN ELDOTJ Conflict1.02
-		IF~CheckStatGT(Player1,16,CHR)~THEN REPLY ~You two are both valuable, but my patience has its limits. I expect more from the people I travel with. Either you call a truce and focus on the task at hand, or neither of you has a place in this group.~ EXTERN ELDOTJ Conflict1.03 //Success 
+		IF~CheckStatGT(Player1,15,CHR)~THEN REPLY ~You two are both valuable, but my patience has its limits. I expect more from the people I travel with. Either you call a truce and focus on the task at hand, or neither of you has a place in this group.~ EXTERN ELDOTJ Conflict1.03 //Success 
 		IF~CheckStatLT(Player1,16,CHR)~THEN REPLY ~You two are both valuable, but my patience has its limits. I expect more from the people I travel with. Either you call a truce and focus on the task at hand, or neither of you has a place in this group.~ EXTERN WNOPHYJ Conflict1.04 //Failure
 		IF~~THEN REPLY ~Then it looks like you're leaving, Ophysia.~ EXTERN WNOPHYJ Conflict1.05
 		
