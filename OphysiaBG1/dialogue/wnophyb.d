@@ -101,7 +101,7 @@ CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",1)
           !StateCheck("DORN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_DORN_2
 ~Do you do anything for fun, Dorn? Or are you so devoid of humanity that even basic pleasures have no place in your life?~
 	DO ~SetGlobal("WNOPHY_DORN","GLOBAL",2)~
-	== BDORN ~Hrmm. I am no stranger to basic pleasures. As for 'fun'... the screams of the weak as I run my blade through their flesh, the crushing of a fool's skull beneath my boot, and the sight of the meek running from me as I walk freely through a town... these things are 'fun' to me.~
+	== BDORN ~Hrmm. I am no stranger to basic pleasures. As for 'fun'... the screams of the weak as I run my blade through their flesh, the crushing of a fool's skull beneath my boot, and the sight of the meek running as I walk freely through town... these things are 'fun' to me.~
 	== WNOPHYB ~So that's a no, then.~
 EXIT
 
@@ -113,8 +113,8 @@ CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",2)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BDORN WNOPHY_DORN_3
 ~I do enjoy the irony of you, bard. Even with your endless prattle.~		  
 	DO ~SetGlobal("WNOPHY_DORN","GLOBAL",2)~
-	== WNOPHYB ~Touching. I’m sure whatever follows will be absolutely delightful.~
-	== BDORN ~You sneer at the cruelty of others while you play the martyr for every whining peasant on the road. You are bound to their misery, and you call it 'goodness'.~		  
+	== WNOPHYB ~How touching. I’m sure whatever follows will be absolutely delightful.~
+	== BDORN ~You sneer at the cruelty of others while you play the martyr for every whining peasant on the road. You are bound to their misery, and you call it 'goodness.'~		  
 	== WNOPHYB ~I would be shocked if you could even begin to understand the mind of a normal person, Dorn. Does the fact that I care for other people make you... insecure?~
 	== BDORN ~Hah! Insecure? Don’t make me laugh, girl. I am not the one parading my weakness for all to see.~
 EXIT
@@ -162,8 +162,8 @@ CHAIN IF ~Global("WNOPHY_ELDOTH","GLOBAL",0)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BELDOT WNOPHY_ELDOTH_1
 ~Would I be correct in assuming that you consider yourself to be some sort of warrior, girl?~
 	DO ~SetGlobal("WNOPHY_ELDOTH","GLOBAL",1)~
-	== WNOPHYB ~By merit of my actions, I don't think there's much to consider about it.~
-	== BELDOT ~Then consider this, instead—remove yourself from the battlefield and leave the fighting to those who know what they're doing.~
+	== WNOPHYB ~By merit of my actions in this group, I don't think there's much to consider about it, Eldoth.~
+	== BELDOT ~Then consider this, instead—remove yourself from the battlefield and leave the fighting to those who know what they're doing. I'm tired of you getting in my way.~
 	== WNOPHYB ~How about this? If you ever look like you're about to speak to me again, I'll stab you in the gut.~
 	== BELDOT ~Such brutality! I shan't have a problem avoiding you with a face such as yours, girl.~
 EXIT
@@ -189,9 +189,9 @@ CHAIN IF ~Global("WNOPHY_ELDOTH","GLOBAL",2)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BELDOT WNOPHY_ELDOTH_3
 ~I have heard word that a filthy little Waterdhavian gutter-rat has infiltrated our ranks. Do you have any clue who it could be, Ophysia?~
 	DO ~SetGlobal("WNOPHY_ELDOTH","GLOBAL",3)~
-	== WNOPHYB ~Why, Eldoth, it must certainly be you. After all, you never shut up about your musical education. What was the name of your college again? Noodle Arm?~
-	== BELDOT ~*ahem* The College of New Olamn, girl. While you were splashing through puddles in the slums, I was perfecting my craft halfway up Mount Waterdeep, leagues above the likes of you. It is no wonder you attempt to keep your miserable past under lock and key—I would be ashamed too.~
-	== WNOPHYB ~And yet you're still half the bard I am. If you truly believed what you were saying then you wouldn't need to tell me in order to make yourself feel better.~
+	== WNOPHYB ~Why, Eldoth, it must certainly be you. After all, you never shut up about your musical education in the City of Splendors. What was the name of your college again? The Noodle Arm?~
+	== BELDOT ~*ahem* The College of New Olamn, girl. While you were wading through puddles in the slums, I was perfecting my craft halfway up Mount Waterdeep, leagues above the likes of you. It is no wonder you attempt to keep your miserable past under lock and key—I would be ashamed too.~
+	== WNOPHYB ~And yet you're still half the bard I am. If you truly believed what you were saying then need the validation of putting me down.~
 	== BELDOT ~Calling yourself a bard is a cruel joke on the whole of Faerûn.~
 EXIT
 
@@ -201,14 +201,14 @@ CHAIN IF ~Global("WNOPHY_ELDOTH","GLOBAL",3)
           InParty("WNOPHY")
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BELDOT WNOPHY_ELDOTH_4
-~How much longer must I endure this parade of incompetence? I am surrounded by dullards, but worst of all is this bitch of a bard that couldn't play a lute to save her life. If the gods had any mercy left then they would surely strike her down so we can travel without the shrill ringing of ineptitude.~
+~How much longer must I endure this parade of incompetence? I am surrounded by dullards of all sorts, but worst of all is this bitch of a bard who couldn't play a lute to save her life. If the gods had any mercy left then they would surely strike her down so we can travel without the shrill ringing of ineptitude.~
 	DO ~SetGlobal("WNOPHY_ELDOTH","GLOBAL",4)~
-	== WNOPHYB ~You talk a lot for a man with a face that's begging to be punched. My offer of a sword in your gut is still an open one, I'll have you know.~
+	== WNOPHYB ~For someone so convinced of his own genius, you spend a remarkable amount of time begging for a lesson in humility. If it’s a sword you want, just say so.~
 	== BELDOT ~Perish the thought that I would ever allow you to strike a blow on me. You and that sluggish sword arm of yours wouldn't even get within ten feet of me before you're lying face down in the mud—where you belong.~
 	== BSKIE IF ~InParty("SKIE")~ THEN ~Eldoth, PLEASE. Ophysia has done nothing to you. You have to stop being so rude!~
 	== BELDOT IF ~InParty("SKIE")~ THEN ~Skie, stand back. I am not speaking to you.~
-	== BSKIE IF ~InParty("SKIE")~ THEN ~Hmph.~
-	== WNOPHYB ~Talk all you like, Eldoth. You'll not be the one walking away should we come to blows.~
+	== BSKIE IF ~InParty("SKIE")~ THEN ~Hmph. Fine.~
+	== WNOPHYB ~Talk all you like, Eldoth. You'll not be the one walking away should you try something.~
 EXIT
  
 
@@ -403,6 +403,21 @@ CHAIN IF ~Global("WNOPHY_NEERA","GLOBAL",0)
 	== BNEERA ~You're right about that. People usually only kick me out after I've burned something down, though.~
 	== WNOPHYB ~Is that a hobby of yours, or just something you're naturally gifted at?~
 	== BNEERA ~Both. Be sure to keep me away from any wooden structures.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_NEERA","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("NEERA",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BNEERA WNOPHY_NEERA_2
+ ~Did you ever want to be something other than a bard, Ophysia? Or did you hear the sound of the—uh, proverbial lute, and just know?~
+	DO ~SetGlobal("WNOPHY_NEERA","GLOBAL",2)~
+	== WNOPHYB ~I don't think I started considering myself a bard until well after I had started walking the path. There was a time in my life when I was on track to become some common cutpurse. I was never much good at holding down a regular job—not that I tried very hard.~
+	== BNEERA ~You? The sneaky type? I don't see it. If you narrated our battles any louder then I wouldn't be able to concentrate on casting my spells.~
+	== WNOPHYB ~I would've thought you wouldn't have to put as much effort into wild magic. Can't you just... let it do its thing?~
+	== BNEERA ~I'm not a sorcerer! Do you want your hair singed? Or maybe you'd enjoy life as a rat for a bit—or gods forbid... a man.~
+	== WNOPHYB ~Point taken. Please, keep doing whatever it is you're doing that keeps us un-rat-ified.~
 EXIT
 
 // Quayle

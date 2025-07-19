@@ -813,7 +813,13 @@ CHAIN ELDOTJ Conflict1.01
 	== SKIEJ IF ~InParty("SKIE")~THEN ~*sigh* Fine, Eldoth. Maybe I'll see you around, Ophysia.~
 	== WNOPHYJ ~Get out of here, Eldoth. I'm sure you'll get what's coming to you eventually.~
 	== ELDOTJ ~Goodbye now. Hope to never see you again.~ [ELDOT07]
-	DO ~SetGlobal("wn_ophy_eldoth","GLOBAL",1) SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~ EXIT
+	DO
+    ~ActionOverride("ELDOTH",LeaveParty())
+    ActionOverride("ELDOTH",EscapeArea())
+    ActionOverride("SKIE",LeaveParty())
+    ActionOverride("SKIE",EscapeArea())
+    SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~
+EXIT
 	
 CHAIN ELDOTJ Conflict1.02
 ~Well now, it appears that my Skie has become a fountain of wisdom. I suppose I can attempt to divert my hostilities towards a more... productive end if it would so please you both.~
@@ -827,7 +833,7 @@ CHAIN ELDOTJ Conflict1.03
 	== ELDOTJ ~Indeed. I shan't forget so long as you keep your blade pointed away from my neck.~
 	== SKIEJ IF~InParty("SKIE")~THEN ~See? Everything's alright. Let's just stay friendly, okay?~
 	== ELDOTJ IF~InParty("SKIE")~THEN ~Anything for you, Skie. Now come along, walk beside me.~
-	DO ~SetGlobal("wn_ophy_eldoth","GLOBAL",3) SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~ EXIT
+	DO ~SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~ EXIT
 	
 CHAIN WNOPHYJ Conflict1.04
 ~Absolutely not. I'd rather pull out my own hair than walk alongside this xvart-faced chauvinist another <DAYNIGHT>. If you want him in the group, you're saying goodbye to me—and that's not a difficult choice for me to make.~
@@ -836,8 +842,12 @@ CHAIN WNOPHYJ Conflict1.04
 		IF~~THEN REPLY ~If you wish to force the issue, then you'll have to leave, Ophysia.~ EXTERN WNOPHYJ Conflict1.05
 		
 CHAIN WNOPHYJ Conflict1.05
-~Fine. I see where your priorities lie, and I'd prefer not to travel with someone who prefers the company of Eldoth Kron over mine. Goodbye, <CHARNAME>.~
-	DO ~SetGlobal("wn_ophy_eldoth","GLOBAL",2) SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~ EXIT
+~Fine. I see where your priorities lie, and I'd prefer not to travel with someone who thinks Eldoth Kron’s company is worth more than mine. If that’s truly the choice you want to make, then so be it. Goodbye, <CHARNAME>—and good luck. You'll need it if he's who you're choosing to watch your back.~
+	DO 
+	~ActionOverride("WNOPHY",LeaveParty())
+    ActionOverride("WNOPHY",EscapeArea())
+    SetGlobal("WNOPHY_ELDOTH_FIGHT","GLOBAL",3)~
+EXIT
 		
 		
 // AFTER MULAHEY'S DEATH
