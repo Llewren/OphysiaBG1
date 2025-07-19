@@ -8,7 +8,7 @@ From the writer of the Smoldering Mods Bar comes a new NPC mod: introducing Ophy
 
 - 9 friendship talks in BG:EE
 - 4 friendship talks in SoD, with an additional three "budding" romance talks for female PCs
-- At least one banter with every companion in the game
+- Up to four banters with each companion in the game
 - Interjections avaialable as an optional component
 - A unique (and upgradeable) buckler for Ophysia
 
