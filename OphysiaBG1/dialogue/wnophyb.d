@@ -11,7 +11,7 @@ CHAIN IF ~Global("WNOPHY_AJANTIS","GLOBAL",0)
 ~I would have words with you, bard.~
 	DO ~SetGlobal("WNOPHY_AJANTIS","GLOBAL",1)~
 	== WNOPHYB ~Are you talking to me, Ajantis?~
-	== BAJANT ~While I have infinite respect for the fairer sex, I must admit that your callousness both in and out of battle is not befitting of our righteous quest.~
+	== BAJANT ~While I have infinite respect for the fairer sex, I must admit that your callousness both in and out of battle borders on unacceptable. A noble cause demands noble conduct.~
 	== WNOPHYB ~Surely you have something better to do than lecture me. Go and smite a goblin, or whatever it is you do.~
 	== BAJANT ~Hmph!~
 EXIT
@@ -24,12 +24,43 @@ CHAIN IF ~Global("WNOPHY_AJANTIS","GLOBAL",1)
           !StateCheck("AJANTIS",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_AJANTIS_2
 ~Why do you wish to be knighted so badly, Ajantis?~
 	DO ~SetGlobal("WNOPHY_AJANTIS","GLOBAL",2)~
-	== BAJANT ~Whatever do you mean? It would be odd if I did NOT desire knighthood!~
+	== BAJANT ~Whatever do you mean? Surely it is only natural. To serve with honor, and to be recognized by it. What warrior would not wish for such a thing?~
 	== WNOPHYB ~I suppose, but I'm asking you why YOU want to be a knight. What will it actually change in the good that you do for the world? You're already capable of doing knightly things. What will a title change?~
 	== BAJANT ~A title, Ophysia, means more than just respect—it means power to act! As a knight, I would be entrusted with the authority to fight evil wherever it rears its head. That is why I wish for knighthood.~
 	== WNOPHYB ~Authority, then? Would that authority extend to, for example, a corrupt higher-up in your order?~
-	== BAJANT ~Bah. I'll not entertain such notions. if you are determined not to respect me, I shan't put in the effort to impress you.~
+	== BAJANT ~If you cannot see the worth in what I strive for, then I see no purpose in convincing you.~
 EXIT
+
+CHAIN IF ~Global("WNOPHY_AJANTIS","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("AJANTIS",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BAJANT WNOPHY_AJANTIS_3
+~If I am to truly call you a comrade in arms, I must know what you stand for, Ophysia.~
+	DO ~SetGlobal("WNOPHY_AJANTIS","GLOBAL",3)~
+	== WNOPHYB ~Haven't we traveled together long enough for that to be, I don't know, at least a *little* bit clear?~
+	== BAJANT ~I know you act on what you believe is right, but I’ve yet to discern the standard by which you judge it.~
+	== WNOPHYB ~The standard by which I...? I don't know, Ajantis. It's just a feeling. Do you have those, or do you just do what 'The Vigilant One' tells you?~
+	== BAJANT ~I do not obey blindly, if that is your meaning. The code of my faith is not the absence of feeling, it is its refinement. I have questioned much, and I will continue to, but I do not let every fleeting emotion set my course.~
+	== WNOPHYB ~You are massively overcomplicating this whole thing. I really don't feel like continuing this conversation right now.~
+	EXIT
+	
+CHAIN IF ~Global("WNOPHY_AJANTIS","GLOBAL",3)
+          CombatCounter(0)
+          !StateCheck("AJANTIS",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BAJANT WNOPHY_AJANTIS_4
+~I have thought on our last conversation, Ophysia. I apologize if my questioning has been overbearing—in truth, I think that I am somewhat envious of you.~
+	DO ~SetGlobal("WNOPHY_AJANTIS","GLOBAL",4)~
+	== WNOPHYB ~Really, now? It's not the first time I've heard that, but it's surprising coming from a paladin. Go on, then. Why are you so envious of me?~
+	== BAJANT ~Before, I questioned the measure by which you decide what is right and wrong. In the Order of the Radiant Heart, we have strict codes, and my worship of Helm binds me stronger still.~
+	== BAJANT ~These things are valuable to me—they help me clearly when my mind is clouded. But you, Ophysia, always seem certain of the right thing to do, with no order nor god. I suppose... I do not understand it. I wish that I could.~
+	== WNOPHYB ~I've just... lived a lot of life. I've seen first hand what it's like to be on the receiving end of pretty horrible stuff, whether I'm the one holding the blade or having it pointed at me.~
+	== WNOPHYB ~It's all part of who I am, whether I like it or not. And I don't like it. So I do what I can to ensure no one has to suffer through the things I have.~
+	== BAJANT ~You hold a conviction that I admire deeply. Thank you for trusting me with it.~
+	EXIT
 
 // Alora
 
@@ -191,7 +222,7 @@ CHAIN IF ~Global("WNOPHY_ELDOTH","GLOBAL",2)
 	DO ~SetGlobal("WNOPHY_ELDOTH","GLOBAL",3)~
 	== WNOPHYB ~Why, Eldoth, it must certainly be you. After all, you never shut up about your musical education in the City of Splendors. What was the name of your college again? The Noodle Arm?~
 	== BELDOT ~*ahem* The College of New Olamn, girl. While you were wading through puddles in the slums, I was perfecting my craft halfway up Mount Waterdeep, leagues above the likes of you. It is no wonder you attempt to keep your miserable past under lock and key—I would be ashamed too.~
-	== WNOPHYB ~And yet you're still half the bard I am. If you truly believed what you were saying then need the validation of putting me down.~
+	== WNOPHYB ~And yet you're still half the bard I am. If you truly believed what you were saying then you wouldn't need the validation of putting me down.~
 	== BELDOT ~Calling yourself a bard is a cruel joke on the whole of Faerûn.~
 EXIT
 
@@ -257,7 +288,7 @@ CHAIN IF ~Global("WNOPHY_GARRICK","GLOBAL",0)
 ~My lady Ophysia, your stories make our journeys all the more enjoyable, but uh—perhaps you could be a slight more selective with when you choose to share them.~
 	DO ~SetGlobal("WNOPHY_GARRICK","GLOBAL",1)~
 	== WNOPHYB ~Could you possibly be more vague with what you suggest, Garrick?~
-	== BGARRI ~Well, I've noticed you've taken to humming tunes in the morning—and while I encourage and respect your vocal endeavours, my voice shines in the morning in such a way it does not in the evening.~
+	== BGARRI ~Well, I've noticed you've taken to humming tunes in the morning—and while I encourage and respect your vocal endeavors, my voice shines in the morning in such a way it does not in the evening.~
 	== WNOPHYB ~You're saying that I'm... preventing you from practicing your craft? How... terrible.~ 
 	== BGARRI ~If I were to be impolite about the matter, that is perhaps how I would phrase it.~
 	== WNOPHYB ~If we're being impolite about this, then let me be honest. Your voice gives me a headache.~
@@ -277,7 +308,7 @@ CHAIN IF ~Global("WNOPHY_IMOEN","GLOBAL",0)
 	DO ~SetGlobal("WNOPHY_IMOEN","GLOBAL",1)~
 	== BIMOEN ~What were they?~
 	== WNOPHYB ~Accept death... or get creative.~
-	== WNOPHYB ~The vial of acid on his belt—he emptied the vial into his loose shoe. While it was eating away at the leather, he threw it right into the ogres's face, removing its ugly grin from the realms.~
+	== WNOPHYB ~The vial of acid on his belt—he emptied the vial into his loose shoe. While it was eating away at the leather, he threw it right into the ogre's face, removing its ugly grin from the realms.~
 	== BIMOEN ~Ooh, haha! I'll have to remember that one. Your stories make me so nostalgic, Ophysia. Back home, Puffguts would talk my ear off about all the things he'd seen and heard.~
 	== WNOPHYB ~You grew up with <CHARNAME> in Candlekeep, right?~
 	== BIMOEN ~Yup. Never really had any parents, but I always felt right at home when listening to those ol' stories.~
@@ -308,7 +339,7 @@ CHAIN IF ~Global("WNOPHY_KAGAIN","GLOBAL",0)
           !StateCheck("KAGAIN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_KAGAIN_1
 ~So, Kagain, how'd you wind up running a mercenary business?~
 	DO ~SetGlobal("WNOPHY_KAGAIN","GLOBAL",1)~
-	== BKAGAI ~Mind your own buisness, half-elf.~
+	== BKAGAI ~Mind your own business, half-elf.~
 	== WNOPHYB ~Fine by me. I was just trying to be pleasant.~
 	== BKAGAI ~You're lucky I don't find ya fightin' as insufferable as ya yappin', otherwise I wouldn't suffer your company.~  
 	== WNOPHYB ~I'm sure I'm truly blessed.~
@@ -353,7 +384,7 @@ CHAIN IF ~Global("WNOPHY_KHALID","GLOBAL",0)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BKHALI WNOPHY_KHALID_1
 ~Your tales of valor are m-most welcome to my ears, Ophysia, but I wonder how you have the c-courage to spin stories in the midst of b-battle.~
 	DO ~SetGlobal("WNOPHY_KHALID","GLOBAL",1)~
-	== WNOPHYB ~I'm not totally defenceless, Khalid. Besides, if I can inspire you to fight harder, you'll be worth more than two of me on the battlefield.~
+	== WNOPHYB ~I'm not totally defenseless, Khalid. Besides, if I can inspire you to fight harder, you'll be worth more than two of me on the battlefield.~
 	== BKHALI ~You're s-selling yourself short. You are a v-valuable asset to this party with your s-sword and spells both.~
 	== WNOPHYB ~As are you. It's an honor to fight beside you.~
 EXIT
@@ -366,12 +397,12 @@ CHAIN IF ~Global("WNOPHY_MINSC","GLOBAL",0)
           InParty("WNOPHY")
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BMINSC WNOPHY_MINSC_1
-~Your tales of butt-kicking are truly inspiring to Boo and I! Perhaps... Perhaps you would be interested in telling Boo bedime stories of your bravery?~
+~Your tales of butt-kicking are truly inspiring to Boo and I! Perhaps... Perhaps you would be interested in telling Boo bedtime stories of your bravery?~
 	DO ~SetGlobal("WNOPHY_MINSC","GLOBAL",1)~
 	== WNOPHYB ~Wouldn't Boo prefer something a bit more peaceful? I don't think tales of battle are appropriate for a hamster's bedtime story.~
 	== BMINSC ~Butt-kicking is all Boo dreams of! Your stories make Boo fight harder. And when Boo fights harder, so does Minsc!~
 	== WNOPHYB ~Well... I suppose one story couldn't hurt.~
-	== BMINSC ~Not tonght, though. He needs a bath, and it may take a while. Boo is a slippery one when it comes to scrubbing.~
+	== BMINSC ~Not tonight, though. He needs a bath, and it may take a while. Boo is a slippery one when it comes to scrubbing.~
 EXIT
  
 // Montaron
@@ -587,7 +618,7 @@ CHAIN IF ~Global("WNOPHY_YESLICK","GLOBAL",0)
           InParty("YESLICK")
           See("YESLICK")
           !StateCheck("YESLICK",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_YESLICK_1
- ~Yeslick, perhaps you would be interested in regailing me in tales from your clan. It would be good to share such stories before they are lost from the world.~
+ ~Yeslick, perhaps you would be interested in regaling me in tales from your clan. It would be good to share such stories before they are lost from the world.~
 	DO ~SetGlobal("WNOPHY_YESLICK","GLOBAL",1)~
   	== BYESLI ~It's been a long time... but aye. It would be my pleasure.~  
 	== WNOPHYB ~I'm grateful. I'll be sure to credit you, but royalties may not be impressive either way.~
