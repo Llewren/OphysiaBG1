@@ -384,6 +384,53 @@ CHAIN IF ~Global("WNOPHY_JAHEIRA","GLOBAL",0)
 	== BJAHEI ~I truly wonder how.~
 EXIT
 
+CHAIN IF ~Global("WNOPHY_JAHEIRA","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("JAHEIRA",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BJAHEI WNOPHY_JAHEIRA_2
+~I see too much of myself in you, Ophysia. Loud, certain... always convinced that you can handle anything.~
+	DO ~SetGlobal("WNOPHY_JAHEIRA","GLOBAL",2)~
+	== WNOPHYB ~That's worrying to me on multiple levels. You're not THAT much older than me. Right?~
+	== BJAHEI ~Age has little to do with it. Experience does. I have seen enough to know that confidence without caution invites pain.~
+	== WNOPHYB ~Well, that's wonderful. I'll be sure to ignore that advice the same way I'm certain you did.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_JAHEIRA","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+          InParty("JAHEIRA")
+          See("JAHEIRA")
+          !StateCheck(JAHEIRA)~ THEN WNOPHYB WNOPHY_JAHEIRA_3
+~So, Jaheira—the whole balance thing. Is it something you actually believe, or just string people along for because it's your job? I haven't met many druids, but the ones I have seem to all have very different interpretations of balance.~
+	DO ~SetGlobal("WNOPHY_JAHEIRA","GLOBAL",3)~
+	== BJAHEI ~I do not 'string people along,' and it wouldn't be my 'job,' as you so acutely put it, if I did not truly believe in the value of balance. As for the varying interpretations of what it means—that itself is part of maintaining the balance. It is hardly our goal for everyone to share the same beliefs. Do you understand?~
+	== WNOPHYB ~I suppose. I guess I just don't really see the... the humanity in it, for a lack of a better term.~
+	== BJAHEI ~You are not the only one. Many who revile the concept of balance simply think it uneccesary, or cruel in its indistinction. To serve the balance is a duty I cherish, but it is also a burden for this very fact.~
+	== WNOPHYB ~Then why serve it at all? Why not let the world balance itself, or leave it up to the gods?~
+	== BJAHEI ~For the same reason that you cannot lay down your sword when you see others in need of protection. It is part of who I am, Ophysia.~
+	== WNOPHYB ~I won't say I truly understand, but I guess I can live with that.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_JAHEIRA","GLOBAL",3)
+          CombatCounter(0)
+		  Global("Chapter","GLOBAL",7)
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+          InParty("JAHEIRA")
+          See("JAHEIRA")
+          !StateCheck(JAHEIRA)~ THEN WNOPHYB WNOPHY_JAHEIRA_4
+~You look tired, Jaheira. Are you alright?~
+	DO ~SetGlobal("WNOPHY_JAHEIRA","GLOBAL",4)~
+	== BJAHEI ~We are all tired, I am sure. You needn't worry yourself with me.~
+	== WNOPHYB ~I don't have to, but I'm asking because I care. You can talk to me.~
+	== BJAHEI ~Mm. It has simply been a long journey, and I feel we are approaching its close soon. I would not be so presumptuous as to assume we will get a moment of rest once this is over, but I would appreciate it all the same.~
+	== WNOPHYB ~We'll all have time to rest, I'll make sure of it. I need to sleep in for at least a week.~
+	== BJAHEI ~With the amount that you snore? Gods save us.~
+	== WNOPHYB ~I don't snore!~
+	== BJAHEI ~You absolutely do.~
+EXIT
+
 // Kagain
 
 CHAIN IF ~Global("WNOPHY_KAGAIN","GLOBAL",0)
