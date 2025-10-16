@@ -59,7 +59,7 @@ CHAIN IF ~Global("WNOPHY_AJANTIS","GLOBAL",3)
 	== BAJANT ~These things are valuable to me—they help me clearly when my mind is clouded. But you, Ophysia, always seem certain of the right thing to do, with no order nor god. I suppose... I do not understand it. I wish that I could.~
 	== WNOPHYB ~I've just... lived a lot of life. I've seen first hand what it's like to be on the receiving end of pretty horrible stuff, whether I'm the one holding the blade or having it pointed at me.~
 	== WNOPHYB ~It's all part of who I am, whether I like it or not. And I don't like it. So I do what I can to ensure no one has to suffer through the things I have.~
-	== BAJANT ~You hold a conviction that I admire deeply. Thank you for trusting me with it.~
+	== BAJANT ~You hold a conviction that I admire deeply. Thank you for trusting me with it. It is an honor to fight by your side.~
 	EXIT
 
 // Alora
@@ -108,6 +108,42 @@ CHAIN IF ~Global("WNOPHY_CORAN","GLOBAL",0)
 	== WNOPHYB ~Wait, I remember how— No. Never in a thousand years.~
 EXIT
 
+CHAIN IF ~Global("WNOPHY_CORAN","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("CORAN",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BCORAN WNOPHY_CORAN_2
+~You are a remarkable creature, Ophysia.~
+	DO ~SetGlobal("WNOPHY_CORAN","GLOBAL",2)~
+	== WNOPHYB ~If you're about to comment on my appearance, I suggest you take it elsewhere.~
+	== BCORAN ~Nay, nothing so shallow. I merely wished to impart upon you my appreciation for your will and good humor. You do much to tie this ragged team of adventurers together with only your natural charm, and I deeply admire you for it.~
+	== WNOPHYB ~Alright, well... that's actually quite nice. If a bit flowery. Perhaps we should swap roles—you might fit the whole bard thing better than I.~
+	== BCORAN ~I have no doubt that your nimble fingers would be up to the task, but I'm at my best one-on-one. I could not enrapture a whole room as you could.~
+	== WNOPHYB ~...Are—are you moving closer to me? Don't even think about it.~
+	== BCORAN ~Apologies. I simply cannot help but wish to be close to you.~
+	== WNOPHYB ~Here I thought we could have a single normal conversation.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_CORAN","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("CORAN",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+		  TimeOfDay("DAY")
+		  AreaType("OUTDOOR")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BCORAN WNOPHY_CORAN_3
+~Why, Ophysia, the sun catches your hair so beautifully. It's like I'm being graced by a golden angel from Mount Celestia itself.~
+	DO ~SetGlobal("WNOPHY_CORAN","GLOBAL",3)~
+	== WNOPHYB ~Oh, boy. Do I really have to spell this out for you?~
+	== BCORAN ~If you wish to bestow knowledge upon me, who would I be to refuse?~
+	== WNOPHYB ~Right. Coran, I appreciate the compliments, but I am so unbelievably uninterested. I would probably still be uninterested if I liked men in that way at all, but I don't. Understand?~
+	== BCORAN ~Ah, quite understood indeed. I am grateful that you told me before I went and made a further fool of myself. Still, my dedication to be in your company has not waned—you are a valuable ally, and a pleasure to walk with. It would be a shame to sour such a friendship.~
+	== WNOPHYB ~You're being rather presumptuous by calling what we have a friendship, but admittedly, you're not so bad when you're not being one of the worst people I've ever met.~
+	== BCORAN ~Why, that's the nicest thing anyone's ever said to me.~
+EXIT
+
+
 // Dorn
 
 CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",0)
@@ -143,11 +179,30 @@ CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",2)
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BDORN WNOPHY_DORN_3
 ~I do enjoy the irony of you, bard. Even with your endless prattle.~		  
-	DO ~SetGlobal("WNOPHY_DORN","GLOBAL",2)~
+	DO ~SetGlobal("WNOPHY_DORN","GLOBAL",3)~
 	== WNOPHYB ~How touching. I’m sure whatever follows will be absolutely delightful.~
 	== BDORN ~You sneer at the cruelty of others while you play the martyr for every whining peasant on the road. You are bound to their misery, and you call it 'goodness.'~		  
 	== WNOPHYB ~I would be shocked if you could even begin to understand the mind of a normal person, Dorn. Does the fact that I care for other people make you... insecure?~
 	== BDORN ~Hah! Insecure? Don’t make me laugh, girl. I am not the one parading my weakness for all to see.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",3)
+          CombatCounter(0)
+		  PartyRested()
+		  AreaType("OUTSIDE")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+          InParty("DORN")
+          See("DORN")
+          !StateCheck("DORN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_DORN_4
+~I saw you gazing longingly into the fire last night, Dorn. Less brooding, more contemplative. I didn't realize you were capable of such a thing.~		  
+	DO ~SetGlobal("WNOPHY_DORN","GLOBAL",4)~
+	== BDORN ~Contemplation? Hardly. I was picturing how easily it would consume us all if left unattended.~		  
+	== WNOPHYB ~I imagine to you that's some kind of profound insight on how you can't allow your guard down lest we all betray you, or something.~
+	== BDORN ~I would not put it so flippantly, but perhaps.~
+	== WNOPHYB ~You live a lonely, lonely life, Dorn. Though I guess as a blackguard you've always got a voice whispering in your ear, huh?~
+	== BDORN ~Still your wagging tongue, wench. You know not of what you speak.~
+	== WNOPHYB ~Oh, no. Of course I don't. I'm clueless before the enormity of your intelligence. Hey, have you ever tried poetry? I think you'd be great at it.~
+	== BDORN ~One day your mockery will get you killed, bard. Mark my words.~
 EXIT
 
 
@@ -521,7 +576,39 @@ CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",0)
  ~It is refreshing to travel with a woman who can hold her own in combat.~
 	DO ~SetGlobal("WNOPHY_SHARTEEL","GLOBAL",1)~
 	== WNOPHYB ~I... could say the same about you, Shar-Teel.~  
-	== BSHART ~That means much from one as respectable as yourself.~
+	== BSHART ~Could, but won't, your tone suggests.~
+	== WNOPHYB ~I suppose we'll see.~
+EXIT
+	
+CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("SHARTEEL",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSHART WNOPHY_SHARTEEL_2
+ ~Why have you been avoiding my gaze, Ophysia? Had we not bled together, I would think you... scared.~
+	DO ~SetGlobal("WNOPHY_SHARTEEL","GLOBAL",2)~
+	== WNOPHYB ~Scared isn't the right word. You're just unbearably intense sometimes. Most of the time, really.~  
+	== BSHART ~If my intensity is too much for you, then you will easily crack in a difficult battle, or under torture. That makes you a liability, and I would suggest you remedy this.~
+	== WNOPHYB ~I'm not planning on letting my guard down, Shar-Teel, if that's what you're worried about.~
+	== SHART ~I am not worried. I am simply preparing for the inevitable.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("SHARTEEL",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSHART WNOPHY_SHARTEEL_3
+ ~Why can you not see that helping every second straggler that comes our way is a waste of time, Ophysia? It is demeaning to all of us, and serves no one.~
+	DO ~SetGlobal("WNOPHY_SHARTEEL","GLOBAL",3)~
+	== BSHART ~The people we encounter on our path may hold the facade of bumbling ineptitude—farmers and their lost cattle, old men missing their heirlooms, and more of the same crap. Give any of them power or status, and that facade will collapse.~
+	== WNOPHYB ~So you just think that everyone is inherently terrible? That's horribly pessimistic.~  
+	== BSHART ~It is reality. I have seen what 'good' people do when given the chance, when they think no one will ever know, or judge them. It is the nature of mortal creatures.~
+	== WNOPHYB ~Does the same apply to you, then?~
+	== SHART ~I am many things, but a hypocrite is not one of them. Do you not think me terrible?~
+	== WNOPHYB ~I think you hurt, Shar-Teel. I would be glad to see you find peace, but I don't think that'll happen unless you want it.~
+	== BSHART ~Your pity is unneeded. It’s why I started this conversation—and why I shouldn’t have.~
 EXIT
   
 // Skie
