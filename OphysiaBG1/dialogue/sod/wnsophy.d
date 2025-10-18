@@ -47,7 +47,7 @@ CHAIN WNSOPHY IronMeeting.09
 		IF~~THEN REPLY ~She tried to kill me—I'll repay her in kind.~ EXTERN WNSOPHY IronMeeting.10
 
 CHAIN WNSOPHY IronMeeting.10
-~Really? Bold of her to send assassins after the Hero of Baldur's Gate, of all people. Stranger still that she even HAS assassins.~
+~Really? Bold of her to send assassins after the hero of Baldur's Gate, of all people. Stranger still that she even HAS assassins.~
 == WNSOPHY ~This is shaping up to be a lot worse than I thought it would be.~
 	END
 		IF~~THEN REPLY ~Join with me, Ophysia. I could use your help with this.~ EXTERN WNSOPHY IronMeeting.11

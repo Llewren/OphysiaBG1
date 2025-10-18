@@ -50,7 +50,7 @@ A: Find the thread for Ophysia on the Beamdog Forums and leave a comment or cont
 -------------
 
 Mod Author: Llewren
-General help: Lava Del'Vortel, morpheus562, RoyalProtector
+General help: Lava Del'Vortel, morpheus562, RoyalProtector, Jastey, Zenblack, Dark0Dave
 Soundset: Canis Major
 Portrait: Midjourney, with edits by Llewren
 
@@ -63,6 +63,18 @@ All original content contained in this mod is © Llewren. Please do not redistri
 ---------------------
 -- Version history --
 ---------------------
+
+October 2025 — v1.4
+- Fixed issue with SoD scripts that may cause problems
+- Fix by Jastey to stop random voicelines playing when Ophysia is waiting in camp
+- Minor grammar fixes in SoD
+- 13 new banters (Branwen, Coran, Dorn, Jaheira, Safana, Shar-Teel)
+- Banter edits (Ajantis, Branwen, Jaheira, Safana, Shar-Teel)
+
+September 2025 — v1.3.1
+- Fixed multiple typos in Ophysia's banters
+- 2 new banters (Ajantis)
+- Adjusted Ajantis banter tone to align with his characterisation in the BG:EE NPC Revamp.
 
 July 2025 — v1.3
 - Fixed several scenery talks not triggering properly
