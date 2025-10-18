@@ -12,4 +12,5 @@ THEN
     SetGlobalTimer("bd_jail_visitors2_timer","bd0104",TEN_ROUNDS)
     MoveGlobal("bd0104","WNOPHY",[720.620])
     ActionOverride("WNOPHY",ChangeAIScript("bdvisit",OVERRIDE))
+	Continue()
 END

@@ -8,6 +8,7 @@ RESPONSE #100
 CreateCreature("WNMADRI",[824.864],S)
 SetGlobal("MadriFinale","BD4300",1)
 SetGlobal("WNMadriPlot","Global",10)
+Continue()
 END
 
 // Return from Avernus
@@ -22,6 +23,7 @@ THEN
         SetGlobalTimer("bd_mdd1341a_ot_timer","bd4300",4)  // Dragonspear Castle Basement
         SetGlobal("bd_ot2_WNOPHY","bd4300",1)  // Dragonspear Castle Basement
         DisplayStringHead("WNOPHY",~Thank the gods. I need a bath.~)
+		Continue()
 END
 
 
@@ -37,6 +39,7 @@ THEN
 		SetGlobal("WNOPHY_bd_ot","bd4300",1)  
 		DisplayStringHead("WNOPHY",~As much as I'd like to sit down and chronicle this whole day, we have to go.~)
 		SmallWait(8)  
+		Continue()
 END
 
 

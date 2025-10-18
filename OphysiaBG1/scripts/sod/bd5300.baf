@@ -9,4 +9,5 @@ THEN
 		SetGlobalTimer("bd_sdd350b_ot_timer","bd5300",THREE_MINUTES)  
 		SetGlobal("WNOPHY_bd_ot","bd5300",1)  
 		DisplayStringHead("WNOPHY",~Who wants to hear a story?!~)
+		Continue()
 END

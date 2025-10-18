@@ -18,4 +18,5 @@ THEN
   CutSceneId(Player1)
   MoveGlobal("bd4300","WNOPHY",[1840.1260])
   ActionOverride("WNOPHY",Face(W))
+  Continue()
 END

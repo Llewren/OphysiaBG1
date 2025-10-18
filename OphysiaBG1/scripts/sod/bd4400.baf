@@ -8,4 +8,5 @@ THEN
 		DisplayStringWait("WNOPHY",~Madri's gonna kill me for this.~) 
 	    SetGlobal("WNOPHY_bd_avernus_bark","bd4400",1)  
 		SmallWait(8)
+		Continue()
 END

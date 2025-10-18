@@ -9,5 +9,6 @@ THEN
 		CreateCreature("WNMADRI",[4077.1172],SE)
 		SetGlobal("MadriCastle","BD4000",1)
 		SetGlobal("WNMadriPlot","Global",4)
+		Continue()
 END
 

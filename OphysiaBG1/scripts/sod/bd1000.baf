@@ -4,6 +4,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("WNOPHYMoveCamp","BD1000",1)
+	Continue()
 END
 
 IF
@@ -38,4 +39,5 @@ THEN
 		SetGlobal("WNOPHY_bd_mdd016b","bd1000",1)
 		SetGlobalTimer("bd_mdd016b_timer","bd1000",ONE_ROUND)
 		DisplayStringHead("WNOPHY",~Well, Caelar seems totally, completely reasonable.~)  
+		Continue()
 END

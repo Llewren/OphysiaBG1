@@ -76,10 +76,9 @@ COMPILE ~OphysiaBG1/scripts/sod/wnsoph16.baf~
 COMPILE ~OphysiaBG1/scripts/sod/wnsophy.baf~
 COMPILE ~OphysiaBG1/scripts/sod/wncut1.baf~
 
-
+EXTEND_TOP ~BD0101.bcs~ ~OphysiaBG1/scripts/sod/bd0101.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~BD0103.bcs~ ~OphysiaBG1/scripts/sod/bd0103.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~BD0104.bcs~ ~OphysiaBG1/scripts/sod/bd0104.baf~ EVALUATE_BUFFER
-EXTEND_TOP ~BD0101.bcs~ ~OphysiaBG1/scripts/sod/bd0101.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~BD0111.bcs~ ~OphysiaBG1/scripts/sod/bd0111.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~BD0114.bcs~ ~OphysiaBG1/scripts/sod/bd0114.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~BD0120.bcs~ ~OphysiaBG1/scripts/sod/bd0120.baf~ EVALUATE_BUFFER

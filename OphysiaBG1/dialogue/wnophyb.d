@@ -124,17 +124,16 @@ EXIT
 CHAIN IF ~Global("WNOPHY_BRANWEN_WOUNDED","GLOBAL",0)
           CombatCounter(0)
 		  HPLT("WNOPHY",10)
-          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
-          InParty("BRANWEN")
-          See("BRANWEN")
-          !StateCheck("BRANWEN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_BRANWEN_1
-~You know, I had a friend that got turned to stone, once. Well, he was less a friend and more of a... work associate. He was breaking into this hedge-mage's home to steal the very scroll that the said wizard used to punish him.~
+          !StateCheck("BRANWEN",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BBRANW WNOPHY_BRANWEN_WOUNDED
+~Hold, Ophysia. You are wounded. Allow me to tend to your injuries.~
 	DO ~SetGlobal("WNOPHY_BRANWEN_WOUNDED","GLOBAL",1)~
-	== WNOPHYB ~The scroll would have fetched a hefty price in the underbelly of Waterdeep, but this mage—oh boy, he was so petty. He threw the petrified fellow off his balcony, and his foot broke right off! Pretty, uh, horrific, when you think about it. I'm thinking about it now. I'm glad that didn't happen to you, Branwen.~
-	== BBRANW ~....Right. And what part of you thought I would wish to hear this tale? The dog Tranzig's curse on me has caused me no end of strife in my mind.~
-	== WNOPHYB ~I'm sorry. I don't have many good memories of those days. I... Well, I guess that doesn't count as one either.~
-	== BBRANW ~Then let us endeavor to make better memories, and leave thoughts of stone flesh far from our minds, no?~
-	== WNOPHYB ~Right, yes. Let's.~
+	== WNOPHYB ~Aw. I was hoping I could keep this one. Figured that a cool scar might win me favor in the right places, if you know what I mean.~
+	== BBRANW ~There will be time enough for scars, trust me. For now, though, we need you upright and walking normally.~
+	== WNOPHYB ~*sigh* Fine, you can do it. Thank you, Branwen.~
+	== BBRANW ~It is merely my duty. We cannot afford to have you weakened on the field—you are heavily relied upon, as are we all.~
 EXIT
   
 // Coran
@@ -656,7 +655,7 @@ CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",0)
 ~You always have something clever to say, don’t you? Makes a girl wonder... Is it a performance? Or do you just like the attention?~
 	DO ~SetGlobal("WNOPHY_SAFANA","GLOBAL",1)~
 	== WNOPHYB ~You know, you’d be amazed by how often those two things go hand in hand.~
-	== BSAFAN ~Mm. I’m not so easily dazzled. But I do admire your commitment.~
+	== BSAFAN ~Mm. I’m not so easily dazzled. But I do admire your confidence.~
 EXIT
 
 CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",1)
@@ -670,6 +669,37 @@ CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",1)
 	== WNOPHYB ~Oh? What exactly are you hoping that flattery will win you today, Safana?~
 	== BSAFAN ~I find it never hurts to encourage loyalty in the right places.~
 	== WNOPHYB ~You might be misjudging mine—and you'd be no good at the damsel in distress role, I'm afraid.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("SAFANA",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSAFAN WNOPHY_SAFANA_3
+~Ophysia, oh Ophysia, my dear. Come here a moment, I've an idea that only you can help me with.~
+	DO ~SetGlobal("WNOPHY_SAFANA","GLOBAL",3)~
+	== WNOPHYB ~Are you sure that I want to hear it? I don't think I want to hear it.~
+	== BSAFAN ~You're not even going to do me the decency of hearing me out? Why, Ophysia, I thought you were a woman of taste.~
+	== WNOPHYB ~Alright, let me make this easier—does this proposal involve one or more of the following: stealing, singing, dancing, lying, setting things on fire, or creeping around at night?~
+	== BSAFAN ~None of those. Well, not ALL of them.~
+	== WNOPHYB ~You should really come with a warning.~
+	== BSAFAN ~And ruin the surprise?~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",3)
+          CombatCounter(0)
+          !StateCheck("SAFANA",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSAFAN WNOPHY_SAFANA_3
+~You're quite good at pretending that you're better than me, Ophysia. I'm sure you have the whole of the Sword Coast fooled. Don't worry, darling—I'll not spill your secret.~
+	DO ~SetGlobal("WNOPHY_SAFANA","GLOBAL",4)~
+	== WNOPHYB ~For once, I am thankful that I have no idea what you're talking about.~
+	== BSAFAN ~Oh, don't scowl. I admire that kind of hypocrisy. It really livens up the group.~
+	== WNOPHYB ~The longer I know you, the more sure I am that I shouldn't care about what you think of me. If it's all the same to you, I'd appreciate it if you stopped speaking to me.~
+	== BSAFAN ~Forgive you? Darling, I’d never hold a grudge over such a little thing.~
+	== WNOPHYB ~I'd be shocked if you ever held onto anything real.~
 EXIT
 
 // Shar-Teel

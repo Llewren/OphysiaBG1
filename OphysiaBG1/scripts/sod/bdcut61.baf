@@ -7,4 +7,5 @@ THEN
 		CutSceneId(Player1)
 		ActionOverride("WNOPHY",LeaveParty())
 		ActionOverride("WNOPHY",DestroyAllFragileEquipment(ADAMANTINE)) 
+		Continue()
 END

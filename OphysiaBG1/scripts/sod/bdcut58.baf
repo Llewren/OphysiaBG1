@@ -7,4 +7,5 @@ THEN
     CutSceneId(Player1)
     MoveGlobal("bd4400","WNOPHY",[1519.1272]) //coordinates somewhere near the portal in bd4400.are. For example, Minsc's are: [1160.1250]
     ActionOverride("WNOPHY",Face(W))     //or whatever so he is facing the portal
+	Continue()
 END

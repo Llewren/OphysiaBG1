@@ -30,4 +30,5 @@ THEN
 		SetGlobalTimer("bd_mdd410z_ot_timer","bd2000",THREE_MINUTES)  // Boareskyr Bridge & Bridgefort
 		SetGlobal("WNOPHY_bd_ot","bd2000",1)  
 		DisplayStringHead("WNOPHY",~For Daggerford!~)  
+		Continue()
 END

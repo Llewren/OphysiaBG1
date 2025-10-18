@@ -15,6 +15,7 @@ THEN
 	EscapeAreaMove("BD7100",770,3560,NW) // Troll Forest
   RESPONSE #4
 	EscapeAreaMove("BD3000",1334,1196,SW) // Coalition Camp
+	Continue()
 END
 
 IF
@@ -34,4 +35,5 @@ THEN
   RESPONSE #4
     SetGlobal("bd_npc_camp","locals",2)
     SaveLocation("LOCALS","bd_default_loc",[1334.1196])
+	Continue()
 END

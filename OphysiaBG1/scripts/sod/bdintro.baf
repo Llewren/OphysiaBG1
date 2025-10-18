@@ -7,4 +7,5 @@ THEN
 		ActionOverride("WNOPHY",Polymorph(FIGHTER_FEMALE_ELF))
 		ActionOverride("WNOPHY",SetDialog("WNSOPHY"))
 		ActionOverride("WNOPHY",ChangeAIScript("WNSOPHY",OVERRIDE))
+		Continue()
 END

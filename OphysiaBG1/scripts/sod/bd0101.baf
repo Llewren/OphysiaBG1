@@ -4,6 +4,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("WNOPHYMoveCamp","BD0101",1)
+	Continue()
 END
 
 IF

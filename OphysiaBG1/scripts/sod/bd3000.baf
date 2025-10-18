@@ -6,6 +6,7 @@ THEN
 RESPONSE #100
 CreateCreature("WNMADRI",[1117.1073],SE)
 SetGlobal("MadriSpawned","BD3000",1)
+Continue()
 END
 
 // Madri leaves when the going gets tough
@@ -45,6 +46,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("WNOPHYMoveCamp","BD3000",1)
+	Continue()
 END
 
 IF

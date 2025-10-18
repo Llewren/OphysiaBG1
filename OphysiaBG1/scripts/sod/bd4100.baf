@@ -11,6 +11,7 @@ THEN
         SetGlobal("wn_Ophy_ot","bd4100",1)  // Dragonspear Castle Keep, First Floor
         SetGlobalTimer("bd_mdd1352_ot_timer","bd4100",2)  // Dragonspear Castle Keep, First Floor
         DisplayStringHead("WNOPHY",~Wh—what? This can't be right. Someone pinch me.~) 
+		Continue()
 END
 
 IF

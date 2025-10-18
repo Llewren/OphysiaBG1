@@ -8,4 +8,5 @@ THEN
     SetGlobal("bd_hellevator_ot_WNOPHY","bd4601",1)
     SetGlobalTimer("bd_hellevator_timer","bd4601",ONE_MINUTE)
     DisplayStringHead("WNOPHY",~Well... This is boring. Boring is better than dead, at least.~)
+	Continue()
 END
