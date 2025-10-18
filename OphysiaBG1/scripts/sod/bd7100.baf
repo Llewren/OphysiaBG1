@@ -8,26 +8,6 @@ END
 
 IF
   Global("WNOPHYMoveCamp","BD7100",0)
-  !BeenInParty("WNOPHY")
-  !Dead("WNOPHY")
-  !InPartyAllowDead("WNOPHY")
-THEN
-  RESPONSE #100
-    SetGlobal("WNOPHYMoveCamp","BD7100",1)
-    CreateCreature("WNSOPHY",[770.3560],NW)
-    ReallyForceSpellDeadRES("BDREJUVE","WNOPHY")
-    ChangeEnemyAlly("WNOPHY",NEUTRAL)
-    ChangeSpecifics("WNOPHY",ALLIES)
-    ActionOverride("WNOPHY",SetGlobal("bd_joined","LOCALS",0))
-    ActionOverride("WNOPHY",SetGlobal("bd_retreat","LOCALS",0))
-    ActionOverride("WNOPHY",SaveObjectLocation("LOCALS","bd_default_loc",Myself))
-    ActionOverride("WNOPHY",ChangeAIScript("WNSOPHY",OVERRIDE))
-    Continue()
-END
-
-IF
-  Global("WNOPHYMoveCamp","BD7100",0)
-  BeenInParty("WNOPHY")
   !Dead("WNOPHY")
   !InPartyAllowDead("WNOPHY")
 THEN

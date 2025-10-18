@@ -63,6 +63,7 @@ THEN
     ActionOverride("WNOPHY",SetGlobal("bd_retreat","LOCALS",0))
     ActionOverride("WNOPHY",SaveObjectLocation("LOCALS","bd_default_loc",Myself))
     ActionOverride("WNOPHY",ChangeAIScript("WNSOPHY",OVERRIDE))
+	  ActionOverride("WNOPHY",MakeGlobal())
     Continue()
 END
 
