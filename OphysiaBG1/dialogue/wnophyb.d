@@ -80,16 +80,61 @@ EXIT
 
 CHAIN IF ~Global("WNOPHY_BRANWEN","GLOBAL",0)
           CombatCounter(0)
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+          InParty("BRANWEN")
+          See("BRANWEN")
+          !StateCheck("BRANWEN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_BRANWEN_1
+~You know, I had a friend that got turned to stone, once. Well, he was less a friend and more of a... work associate. He was breaking into this hedge-mage's home to steal the very scroll that the said wizard used to punish him.~
+	DO ~SetGlobal("WNOPHY_BRANWEN","GLOBAL",1)~
+	== WNOPHYB ~The scroll would have fetched a hefty price in the underbelly of Waterdeep, but this mage—oh boy, he was so petty. He threw the petrified fellow off his balcony, and his foot broke right off! Pretty, uh, horrific, when you think about it. I'm thinking about it now. I'm glad that didn't happen to you, Branwen.~
+	== BBRANW ~....Right. And what part of you thought I would wish to hear this tale? The dog Tranzig's curse on me has caused me no end of strife in my mind.~
+	== WNOPHYB ~I'm sorry. I don't have many good memories of those days. I... Well, I guess that doesn't count as one either.~
+	== BBRANW ~Then let us endeavor to make better memories, and leave thoughts of stone flesh far from our minds, no?~
+	== WNOPHYB ~Right, yes. Let's.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_BRANWEN","GLOBAL",1)
+          CombatCounter(0)
           !StateCheck("BRANWEN",CD_STATE_NOTVALID)
           InParty("WNOPHY")
           See("WNOPHY")
-          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BBRANW WNOPHY_BRANWEN_1
-~Ophysia, it is a pleasure to watch you on the battlefield. You tell stories of your battles, but the way you fight also tells a story about you.~
-	DO ~SetGlobal("WNOPHY_BRANWEN","GLOBAL",1)~
-	== WNOPHYB ~I'm not sure that story would make for an interesting telling, but... thank you, Branwen.~
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BBRANW WNOPHY_BRANWEN_2
+~Ophysia, it is a pleasure to watch you on the battlefield, despite your... fanciful proclivities. You tell many stories of your battles—some more believable than others—but the way you fight also tells a story about you.~
+	DO ~SetGlobal("WNOPHY_BRANWEN","GLOBAL",2)~
+	== WNOPHYB ~I'm not sure that story would make for a particularly interesting telling, but... thank you, Branwen.~
 	== BBRANW ~Do not speak of yourself in such a way. The way you move in battle, how you strike with your sword... it tells the tale of a difficult life, yes, but also a tale of strength. Strength enough to rise above the challenges that the fates bestowed upon you.~
 	== WNOPHYB ~I could say the same for you, Branwen.~
 	== BBRANW ~I thank you, but you need not deflect a compliment when it comes your way.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_BRANWEN","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("BRANWEN",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BBRANW WNOPHY_BRANWEN_3
+~Before we enter our next battle, Ophysia, I invite you to pray with me as a fellow warrior.~
+	DO ~SetGlobal("WNOPHY_BRANWEN","GLOBAL",3)~
+	== WNOPHYB ~Pray to Tempus? I'm... not entirely sure that I'm comfortable with that, Branwen.~
+	== BBRANW ~Tempus rewards those that fight with conviction, with purpose. You do both.~
+	== WNOPHYB ~Well, sure, but those things are enough for me. I don't feel the need for divine favor, from Tempus or any other god.~
+	== BBRANW ~Very well, I respect your decision. We all fight for what guides us—may your strength not fail you in our upcoming skirmishes.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_BRANWEN_WOUNDED","GLOBAL",0)
+          CombatCounter(0)
+		  HPLT("WNOPHY",10)
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+          InParty("BRANWEN")
+          See("BRANWEN")
+          !StateCheck("BRANWEN",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_BRANWEN_1
+~You know, I had a friend that got turned to stone, once. Well, he was less a friend and more of a... work associate. He was breaking into this hedge-mage's home to steal the very scroll that the said wizard used to punish him.~
+	DO ~SetGlobal("WNOPHY_BRANWEN_WOUNDED","GLOBAL",1)~
+	== WNOPHYB ~The scroll would have fetched a hefty price in the underbelly of Waterdeep, but this mage—oh boy, he was so petty. He threw the petrified fellow off his balcony, and his foot broke right off! Pretty, uh, horrific, when you think about it. I'm thinking about it now. I'm glad that didn't happen to you, Branwen.~
+	== BBRANW ~....Right. And what part of you thought I would wish to hear this tale? The dog Tranzig's curse on me has caused me no end of strife in my mind.~
+	== WNOPHYB ~I'm sorry. I don't have many good memories of those days. I... Well, I guess that doesn't count as one either.~
+	== BBRANW ~Then let us endeavor to make better memories, and leave thoughts of stone flesh far from our minds, no?~
+	== WNOPHYB ~Right, yes. Let's.~
 EXIT
   
 // Coran
@@ -143,6 +188,21 @@ CHAIN IF ~Global("WNOPHY_CORAN","GLOBAL",2)
 	== BCORAN ~Why, that's the nicest thing anyone's ever said to me.~
 EXIT
 
+CHAIN IF ~Global("WNOPHY_CORAN","GLOBAL",3)
+          CombatCounter(0)
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)
+		  Global("Chapter","GLOBAL",7)
+          InParty("CORAN")
+          See("CORAN")
+          !StateCheck("CORAN",CD_STATE_NOTVALID)~ THEN BCORAN WNOPHY_CORAN_4
+~Hey Coran, mind doing me a favor?~
+	DO ~SetGlobal("WNOPHY_CORAN","GLOBAL",4)~
+	== BCORAN ~Why, of course, my intrepid bard. I am well known throughout the Realms as nothing if not a charitable man.~
+	== WNOPHYB ~I'm going to ignore the obvious joke I could make there and just ask—would you... mind giving me an archery lesson? I'm not exactly the greatest shot with a bow, but... our foes are getting more dangerous by the day. I figure it might be good to hang back a little.~
+	== BCORAN ~Come now, your skill with a blade is plenty enough to see you through whatever troubles shall befall us. Be that as it may, though, I shan't neglect an opportunity to provide a teachable moment to a friend.~
+	== WNOPHYB ~Again, friend is... ah, whatever. Show me what you've got for me, you bastard. I'm a fast learner.~
+	== BCORAN ~Very well! First off, your foot placement is all off...~
+EXIT
 
 // Dorn
 
@@ -624,7 +684,7 @@ CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",0)
 	DO ~SetGlobal("WNOPHY_SHARTEEL","GLOBAL",1)~
 	== WNOPHYB ~I... could say the same about you, Shar-Teel.~  
 	== BSHART ~Could, but won't, your tone suggests.~
-	== WNOPHYB ~I suppose we'll see.~
+	== WNOPHYB ~You're a unique woman, and not in the most approachable of ways. I suppose we'll see.~
 EXIT
 	
 CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",1)
@@ -638,7 +698,7 @@ CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",1)
 	== WNOPHYB ~Scared isn't the right word. You're just unbearably intense sometimes. Most of the time, really.~  
 	== BSHART ~If my intensity is too much for you, then you will easily crack in a difficult battle, or under torture. That makes you a liability, and I would suggest you remedy this.~
 	== WNOPHYB ~I'm not planning on letting my guard down, Shar-Teel, if that's what you're worried about.~
-	== SHART ~I am not worried. I am simply preparing for the inevitable.~
+	== BSHART ~I am not worried. I am simply preparing for the inevitable.~
 EXIT
 
 CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",2)
@@ -653,7 +713,7 @@ CHAIN IF ~Global("WNOPHY_SHARTEEL","GLOBAL",2)
 	== WNOPHYB ~So you just think that everyone is inherently terrible? That's horribly pessimistic.~  
 	== BSHART ~It is reality. I have seen what 'good' people do when given the chance, when they think no one will ever know, or judge them. It is the nature of mortal creatures.~
 	== WNOPHYB ~Does the same apply to you, then?~
-	== SHART ~I am many things, but a hypocrite is not one of them. Do you not think me terrible?~
+	== BSHART ~I am many things, but a hypocrite is not one of them. Do you not think me terrible?~
 	== WNOPHYB ~I think you hurt, Shar-Teel. I would be glad to see you find peace, but I don't think that'll happen unless you want it.~
 	== BSHART ~Your pity is unneeded. It’s why I started this conversation—and why I shouldn’t have.~
 EXIT
