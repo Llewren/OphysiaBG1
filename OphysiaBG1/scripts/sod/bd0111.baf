@@ -38,5 +38,6 @@ THEN
 	ActionOverride("WNOPHY",ChangeAIScript("",RACE))
 	ActionOverride("WNOPHY",ChangeAIScript("",GENERAL))
 	ActionOverride("WNOPHY",ChangeAIScript("",DEFAULT))
+	ActionOverride("WNOPHY",MakeGlobal())
 	Continue()
 END
