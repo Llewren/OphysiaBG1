@@ -114,6 +114,7 @@ END
 
 //(b) make the character talk when the variable is right
 IF
+ CombatCounter(0)
  OR(6)
  Global("WNOPHYFriendTalks","GLOBAL",2)
  Global("WNOPHYFriendTalks","GLOBAL",5)

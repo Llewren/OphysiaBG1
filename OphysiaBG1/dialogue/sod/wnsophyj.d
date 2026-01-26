@@ -701,7 +701,7 @@ END
 
 // Ophyllis
 
-I_C_T BDOPHYLL 40 wn_ophysia_ophyllis
+I_C_T2 BDOPHYLL 40 wn_ophysia_ophyllis
 == WNSOPHYJ IF ~IsValidForPartyDialogue("WNOPHY")~ THEN ~Betting on dog races is a slippery slope.~
 END
 

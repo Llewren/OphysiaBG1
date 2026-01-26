@@ -248,7 +248,7 @@ EXIT
 CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",3)
           CombatCounter(0)
 		  PartyRested()
-		  AreaType("OUTSIDE")
+		  AreaType("OUTDOOR")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)
           InParty("DORN")
           See("DORN")
@@ -449,10 +449,10 @@ CHAIN IF ~Global("WNOPHY_JAHEIRA","GLOBAL",1)
           InParty("WNOPHY")
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BJAHEI WNOPHY_JAHEIRA_2
-~I see too much of myself in you, Ophysia. Loud, certain... always convinced that you can handle anything.~
+~I see too much of myself in you, Ophysia. Loud, far too certain... always convinced that you can handle anything.~
 	DO ~SetGlobal("WNOPHY_JAHEIRA","GLOBAL",2)~
 	== WNOPHYB ~That's worrying to me on multiple levels. You're not THAT much older than me. Right?~
-	== BJAHEI ~Age has little to do with it. Experience does. I have seen enough to know that confidence without caution invites pain.~
+	== BJAHEI ~Age has little to do with it, but experience does. Confidence without caution invites pain. I've learned that much.~
 	== WNOPHYB ~Well, that's wonderful. I'll be sure to ignore that advice the same way I'm certain you did.~
 EXIT
 
@@ -461,7 +461,7 @@ CHAIN IF ~Global("WNOPHY_JAHEIRA","GLOBAL",2)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)
           InParty("JAHEIRA")
           See("JAHEIRA")
-          !StateCheck(JAHEIRA)~ THEN WNOPHYB WNOPHY_JAHEIRA_3
+          !StateCheck("JAHEIRA",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_JAHEIRA_3
 ~So, Jaheira—the whole balance thing. Is it something you actually believe, or just string people along for because it's your job? I haven't met many druids, but the ones I have seem to all have very different interpretations of balance.~
 	DO ~SetGlobal("WNOPHY_JAHEIRA","GLOBAL",3)~
 	== BJAHEI ~I do not 'string people along,' and it wouldn't be my 'job,' as you so acutely put it, if I did not truly believe in the value of balance. As for the varying interpretations of what it means—that itself is part of maintaining the balance. It is hardly our goal for everyone to share the same beliefs. Do you understand?~
@@ -478,7 +478,7 @@ CHAIN IF ~Global("WNOPHY_JAHEIRA","GLOBAL",3)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)
           InParty("JAHEIRA")
           See("JAHEIRA")
-          !StateCheck(JAHEIRA)~ THEN WNOPHYB WNOPHY_JAHEIRA_4
+          !StateCheck("JAHEIRA",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_JAHEIRA_4
 ~You look tired, Jaheira. Are you alright?~
 	DO ~SetGlobal("WNOPHY_JAHEIRA","GLOBAL",4)~
 	== BJAHEI ~We are all tired, I am sure. You needn't worry yourself with me.~
