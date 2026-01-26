@@ -485,7 +485,7 @@ CHAIN IF ~Global("WNOPHY_JAHEIRA","GLOBAL",3)
 	== WNOPHYB ~I don't have to, but I'm asking because I care. You can talk to me.~
 	== BJAHEI ~Mm. It has simply been a long journey, and I feel we are approaching its close soon. I would not be so presumptuous as to assume we will get a moment of rest once this is over, but I would appreciate it all the same.~
 	== WNOPHYB ~We'll all have time to rest, I'll make sure of it. I need to sleep in for at least a week.~
-	== BJAHEI ~With the amount that you snore? Gods save us.~
+	== BJAHEI ~With the amount that you snore? Gods help us.~
 	== WNOPHYB ~I don't snore!~
 	== BJAHEI ~You absolutely do.~
 EXIT
@@ -558,12 +558,26 @@ CHAIN IF ~Global("WNOPHY_MINSC","GLOBAL",0)
           InParty("WNOPHY")
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BMINSC WNOPHY_MINSC_1
-~Your tales of butt-kicking are truly inspiring to Boo and I! Perhaps... Perhaps you would be interested in telling Boo bedtime stories of your bravery?~
+~Your tales of butt-kicking are truly inspiring to Boo and I, Ophysia! Although I have many mighty stories to share, I am not so good at the telling of them. Perhaps... Perhaps you would be interested in telling Boo bedtime stories of your bravery?~
 	DO ~SetGlobal("WNOPHY_MINSC","GLOBAL",1)~
 	== WNOPHYB ~Wouldn't Boo prefer something a bit more peaceful? I don't think tales of battle are appropriate for a hamster's bedtime story.~
 	== BMINSC ~Butt-kicking is all Boo dreams of! Your stories make Boo fight harder. And when Boo fights harder, so does Minsc!~
 	== WNOPHYB ~Well... I suppose one story couldn't hurt.~
 	== BMINSC ~Not tonight, though. He needs a bath, and it may take a while. Boo is a slippery one when it comes to scrubbing.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_MINSC","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("MINSC",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BMINSC WNOPHY_MINSC_2
+~Minsc has heard you mention your hometown on many occasions, small minstrel! I am curious, though, why do you not wield the miniature sword of your people?~
+	DO ~SetGlobal("WNOPHY_MINSC","GLOBAL",2)~
+	== WNOPHYB ~I... what? First of all, I'm hardly a minstrel, nor am I *that* small. And can you really picture me swinging a dagger around? I'd look ridiculous.~
+	== BMINSC ~Do not be ashamed of your culture, my friend! It is a fine thing to honor your homeland, even if doing so means wielding a puny coward's weapon!~
+	== WNOPHYB ~Minsc, maybe you should let Boo do the talking for a while. Maybe the thinking too.~
+	== BDYNAH IF ~InParty("DYNAHEIR")~ THEN ~Please, Ophysia, do not encourage him with thy jests.~
 EXIT
  
 // Montaron
@@ -640,7 +654,7 @@ CHAIN IF ~Global("WNOPHY_RASAAD","GLOBAL",0)
 	DO ~SetGlobal("WNOPHY_RASAAD","GLOBAL",1)~
 	== WNOPHYB ~I don't WORSHIP, exactly, but I... pay my respects to many gods, in a sense. Selûne is merely one of several.~
 	== BRASAAD ~Ah, I see. It is good to have many sources from which to draw strength, and such a truth is evident in your character.~
-	== WNOPHYB ~Thank you, Rasaad. Perhaps one day I'll settle on worship to one god, but it is as you say. I find much strength in my belief.~
+	== WNOPHYB ~Thank you, Rasaad. Perhaps one day I'll settle on worship to one god, but it is as you say. I find strength in my belief.~
 	== BRASAAD ~Devoting yourself to a god is truly a beautiful thing to do. I have been a better man since I allowed Selûne into my heart.~
 EXIT
   
@@ -697,7 +711,7 @@ CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",3)
 	DO ~SetGlobal("WNOPHY_SAFANA","GLOBAL",4)~
 	== WNOPHYB ~For once, I am thankful that I have no idea what you're talking about.~
 	== BSAFAN ~Oh, don't scowl. I admire that kind of hypocrisy. It really livens up the group.~
-	== WNOPHYB ~The longer I know you, the more sure I am that I shouldn't care about what you think of me. If it's all the same to you, I'd appreciate it if you stopped speaking to me.~
+	== WNOPHYB ~The longer I know you, the more sure I am that I shouldn't care about what you think of me. Forgive me, but I'd appreciate it if you stopped speaking to me. Forever.~
 	== BSAFAN ~Forgive you? Darling, I’d never hold a grudge over such a little thing.~
 	== WNOPHYB ~I'd be shocked if you ever held onto anything real.~
 EXIT
@@ -776,6 +790,20 @@ CHAIN IF ~Global("WNOPHY_TIAX","GLOBAL",0)
 	DO ~SetGlobal("WNOPHY_TIAX","GLOBAL",1)~
  	== WNOPHYB ~I've never polished your boots and I never will, you deranged little man.~
  	== BTIAX ~You think I'm small, but your eyes just see what they wish to see. One day, I will rule all.~
+ EXIT
+ 
+ CHAIN IF ~Global("WNOPHY_TIAX","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("TIAX",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BTIAX WNOPHY_TIAX_2
+ ~Hrrrrnnn... now! And... now!~
+	DO ~SetGlobal("WNOPHY_TIAX","GLOBAL",2)~
+ 	== WNOPHYB ~What are you doing, Tiax? Do I even want to know?~
+ 	== BTIAX ~You are being smitten! No—smited! It is the will of Tiax.~
+	== WNOPHYB ~The word you're looking for is 'smote'.~
+	== BTIAX ~You LIE to Tiax. Tiax knows all. And soon, all will know Tiax.~
  EXIT
   
 // Viconia
