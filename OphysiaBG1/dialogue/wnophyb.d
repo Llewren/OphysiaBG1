@@ -257,7 +257,7 @@ CHAIN IF ~Global("WNOPHY_DORN","GLOBAL",3)
 	DO ~SetGlobal("WNOPHY_DORN","GLOBAL",4)~
 	== BDORN ~Contemplation? Hardly. I was picturing how easily it would consume us all if left unattended.~		  
 	== WNOPHYB ~I imagine to you that's some kind of profound insight on how you can't allow your guard down lest we all betray you, or something.~
-	== BDORN ~I would not put it so flippantly, but perhaps.~
+	== BDORN ~Hrm. I would not put it so flippantly, but perhaps.~
 	== WNOPHYB ~You live a lonely, lonely life, Dorn. Though I guess as a blackguard you've always got a voice whispering in your ear, huh?~
 	== BDORN ~Still your wagging tongue, wench. You know not of what you speak.~
 	== WNOPHYB ~Oh, no. Of course I don't. I'm clueless before the enormity of your intelligence. Hey, have you ever tried poetry? I think you'd be great at it.~
@@ -519,6 +519,22 @@ EXIT
 	== WNOPHYB ~Where did I learn to fight? Here and there. The streets I grew up on tend to teach a girl fast, especially if she doesn’t want to end up bleeding out in an alley.~
 	== BKAGAI ~Didn't take you for a street rat, but I s'pose it checks out. Nothin’ like fightin’ for yer life to put some steel in yer spine.~
 EXIT
+
+CHAIN IF ~Global("WNOPHY_KAGAIN","GLOBAL",2)
+          CombatCounter(0)
+          !StateCheck("KAGAIN",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BKAGAI WNOPHY_KAGAIN_3
+~Considered yourself a mercenary, did ya? Most folks ain't gonna hire a mouthy girl like you. Adventurin' seems like it's more your business. Contributes to the walking circus thing most of them got goin' on.~
+	DO ~SetGlobal("WNOPHY_KAGAIN","GLOBAL",3)~
+	== WNOPHYB ~Who's mouthy now? Kaigan, I hate to inform you, but I believe that *you* are an adventurer now, too. Maybe fate brought us together.~
+	== BKAGAI ~Fate ain't got nothin' to do with it—I follow where the gold is. With the business up in smoke for the moment, I'm just takin' a vacation. A lucrative vacation.~
+	== WNOPHYB ~Hardly laying low, are you? We've been making quite the name for ourselves on this journey.~
+	== BKAGAI ~It ain't ideal, I'll tell ya that. Most of all for the fact that I gotta deal with yer prattlin'.~
+	== WNOPHYB ~You like me. I can tell.~
+	== BKAGAI ~Keep dreamin, pointy-ears.~
+EXIT
   
 // Kivan
 
@@ -548,6 +564,19 @@ CHAIN IF ~Global("WNOPHY_KHALID","GLOBAL",0)
 	== WNOPHYB ~I'm not totally defenseless, Khalid. Besides, if I can inspire you to fight harder, you'll be worth more than two of me on the battlefield.~
 	== BKHALI ~You're s-selling yourself short. You are a v-valuable asset to this party with your s-sword and spells both.~
 	== WNOPHYB ~As are you. It's an honor to fight beside you.~
+EXIT
+
+CHAIN IF ~Global("WNOPHY_KHALID","GLOBAL",1)
+          CombatCounter(0)
+          !StateCheck("KHALID",CD_STATE_NOTVALID)
+          InParty("WNOPHY")
+          See("WNOPHY")
+          !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BKHALI WNOPHY_KHALID_2
+~It is g-good to walk amongst someone whose g-goals align so closely with my own. Nashkel is quite a long w-way from D-D-Daggerford, though, Ophysia. I'm surprised you w-were willing to make the journey.~
+	DO ~SetGlobal("WNOPHY_KHALID","GLOBAL",2)~
+	== WNOPHYB ~I didn't much have a choice, I'm afraid. At least, that's what it felt like. I hardly knew that warriors like you and Jaheira were also going to make the journey.~
+	== BKHALI ~You t-took the initiative, and that is c-commendable. When n-noble souls work together to make a d-difference, that is when the most good happens.~
+	== WNOPHYB ~If that's the case, then I am in excellent company.~
 EXIT
 
 // Minsc
@@ -620,7 +649,7 @@ CHAIN IF ~Global("WNOPHY_NEERA","GLOBAL",1)
  ~Did you ever want to be something other than a bard, Ophysia? Or did you hear the sound of the—uh, proverbial lute, and just know?~
 	DO ~SetGlobal("WNOPHY_NEERA","GLOBAL",2)~
 	== WNOPHYB ~I don't think I started considering myself a bard until well after I had started walking the path. There was a time in my life when I was on track to become some common cutpurse. I was never much good at holding down a regular job—not that I tried very hard.~
-	== BNEERA ~You? The sneaky type? I don't see it. If you narrated our battles any louder then I wouldn't be able to concentrate on casting my spells.~
+	== BNEERA ~You? The sneaky type? I don't see it. If you were any louder in our battles then I wouldn't be able to concentrate on casting my spells.~
 	== WNOPHYB ~I would've thought you wouldn't have to put as much effort into wild magic. Can't you just... let it do its thing?~
 	== BNEERA ~I'm not a sorcerer! Do you want your hair singed? Or maybe you'd enjoy life as a rat for a bit—or gods forbid... a man.~
 	== WNOPHYB ~Point taken. Please, keep doing whatever it is you're doing that keeps us un-rat-ified.~
@@ -666,7 +695,7 @@ CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",0)
           InParty("WNOPHY")
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSAFAN WNOPHY_SAFANA_1
-~You always have something clever to say, don’t you? Makes a girl wonder... Is it a performance? Or do you just like the attention?~
+~You always have something clever to say, don’t you? Are you performing, or do you just like the attention?~
 	DO ~SetGlobal("WNOPHY_SAFANA","GLOBAL",1)~
 	== WNOPHYB ~You know, you’d be amazed by how often those two things go hand in hand.~
 	== BSAFAN ~Mm. I’m not so easily dazzled. But I do admire your confidence.~
@@ -697,7 +726,7 @@ CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",2)
 	== BSAFAN ~You're not even going to do me the decency of hearing me out? Why, Ophysia, I thought you were a woman of taste.~
 	== WNOPHYB ~Alright, let me make this easier—does this proposal involve one or more of the following: stealing, singing, dancing, lying, setting things on fire, or creeping around at night?~
 	== BSAFAN ~None of those. Well, not ALL of them.~
-	== WNOPHYB ~You should really come with a warning.~
+	== WNOPHYB ~You should really warn people about what's wrong with you.~
 	== BSAFAN ~And ruin the surprise?~
 EXIT
 
@@ -707,7 +736,7 @@ CHAIN IF ~Global("WNOPHY_SAFANA","GLOBAL",3)
           InParty("WNOPHY")
           See("WNOPHY")
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BSAFAN WNOPHY_SAFANA_3
-~You're quite good at pretending that you're better than me, Ophysia. I'm sure you have the whole of the Sword Coast fooled. Don't worry, darling—I'll not spill your secret.~
+~You're quite skilled at pretending that you're better than me, Ophysia. I'm sure you have the whole of the Sword Coast fooled. Don't worry, darling—I'll not spill your secret.~
 	DO ~SetGlobal("WNOPHY_SAFANA","GLOBAL",4)~
 	== WNOPHYB ~For once, I am thankful that I have no idea what you're talking about.~
 	== BSAFAN ~Oh, don't scowl. I admire that kind of hypocrisy. It really livens up the group.~
@@ -816,7 +845,7 @@ CHAIN IF ~Global("WNOPHY_VICONIA","GLOBAL",0)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BVICON WNOPHY_VICONIA_1
  ~I am unsure what to make of you, bard. Your inability to keep the silence is irritating, but you are one of few surfacers I've met who treat me with some modicum of respect.~
 	DO ~SetGlobal("WNOPHY_VICONIA","GLOBAL",1)~
-  	== WNOPHYB ~Why, Viconia, that was oddly pleasant of you. You know, I'll gladly pipe down for your sake. All you have to do is ask nicely.~  
+  	== WNOPHYB ~Why, Viconia, that was oddly pleasant of you. You know, I'd gladly pipe down for your sake if you need the quiet. All you have to do is ask nicely.~  
 	== BVICON ~I suppose I'll have to put up with it, then.~
 EXIT
 
@@ -856,7 +885,7 @@ CHAIN IF ~Global("WNOPHY_XZAR","GLOBAL",0)
           InParty("XZAR")
           See("XZAR")
           !StateCheck("XZAR",CD_STATE_NOTVALID)~ THEN WNOPHYB WNOPHY_XZAR_1
- ~Stand away from me, Zhent. I worry that I might catch whatever madness it is you carry.~
+ ~Stand away from me, Xzar. I worry that I might catch whatever madness it is you carry.~
 	DO ~SetGlobal("WNOPHY_XZAR","GLOBAL",1)~
   	== BXZAR ~Madness, you say? 'Tis but a seasonal affliction.~  
 EXIT
