@@ -528,7 +528,7 @@ CHAIN IF ~Global("WNOPHY_KAGAIN","GLOBAL",2)
           !StateCheck("WNOPHY",CD_STATE_NOTVALID)~ THEN BKAGAI WNOPHY_KAGAIN_3
 ~Considered yourself a mercenary, did ya? Most folks ain't gonna hire a mouthy girl like you. Adventurin' seems like it's more your business. Contributes to the walking circus thing most of them got goin' on.~
 	DO ~SetGlobal("WNOPHY_KAGAIN","GLOBAL",3)~
-	== WNOPHYB ~Who's mouthy now? Kaigan, I hate to inform you, but I believe that *you* are an adventurer now, too. Maybe fate brought us together.~
+	== WNOPHYB ~Who's mouthy now? Kagain, I hate to inform you, but I believe that *you* are an adventurer now, too. Maybe fate brought us together.~
 	== BKAGAI ~Fate ain't got nothin' to do with it—I follow where the gold is. With the business up in smoke for the moment, I'm just takin' a vacation. A lucrative vacation.~
 	== WNOPHYB ~Hardly laying low, are you? We've been making quite the name for ourselves on this journey.~
 	== BKAGAI ~It ain't ideal, I'll tell ya that. Most of all for the fact that I gotta deal with yer prattlin'.~
